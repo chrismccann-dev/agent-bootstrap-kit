@@ -103,7 +103,7 @@ on every non-trivial unit of work:
    updates then write themselves.
 7. **Kickoff brief for the next session.** Paste-ready: problem, goal, scope (in/out), entry surface,
    files likely to touch, verification plan, open questions. Tag the MODE: EXECUTING (autonomy
-   applies) vs GRILLING (ask, don't ship).
+   applies) / GRILLING (ask, don't ship) / COORDINATING (delegate + own the synthesis).
 
 ## Roadmap currency
 - When you ship from the roadmap: in the SAME change, remove it from `docs/product/roadmap.md` and

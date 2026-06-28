@@ -15,6 +15,12 @@ highest-leverage investment in an agent-driven repo — it's how you and the age
 each other and how the agent stays consistent across sessions. This skill is the antidote to silent
 definition drift.
 
+> **Read [`LIVED-EXPERIENCE.md`](./LIVED-EXPERIENCE.md) before a serious grill.** This `SKILL.md` is
+> the protocol; the lived-experience doc carries the discipline rules (grep-first, analytical-vs-
+> operational, confabulation ledger), the grilling-vs-executing mode boundary, and a standalone
+> domain-modeling fallback for runtimes without a `/domain-modeling` skill. The protocol is ~20% of
+> the value; that doc is the other 80%.
+
 ## This is a GRILLING session, not an executing one
 
 The human's input is the load-bearing signal. **Default to "ask, don't ship."** Do not let an

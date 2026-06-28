@@ -36,7 +36,21 @@ rm -rf template lessons        # keep skills/ -> .claude/skills already copied
 
 Then read `lessons/01-principles.md` once, and let `CLAUDE.md`'s Sprint Cadence drive how you work.
 
-## Install just the skills (into an existing repo)
+> **Root index naming is tool-agnostic.** `template/CLAUDE.md` is the *content* of the always-loaded
+> root index. Rename the file to whatever your runtime loads every session: `CLAUDE.md` (Claude
+> Code), `AGENTS.md` (Codex / tool-agnostic), or your tool's equivalent.
+
+## Adopting into an existing repo
+
+If the repo already has code, docs, and history, **do not copy the greenfield template** — you'll
+create duplicate surfaces that rot. Read [`lessons/07-existing-repo-adoption.md`](lessons/07-existing-repo-adoption.md).
+Short version: inventory what's there → add a thin agent index → add one stable system doc only if
+missing → add one deterministic check (chosen by the drift this repo is most prone to) → adopt
+`grill-with-docs` first → defer the rest until friction earns it. The **minimal adopted set** is a
+thin root index, one system doc, a glossary, `docs/adr/`, one `check:docs` script, one handoff
+pattern.
+
+## Install just the skills (into any repo)
 
 ```bash
 mkdir -p .claude/skills
@@ -44,7 +58,10 @@ cp -r skills/* .claude/skills/
 ```
 
 Each skill is a self-contained `SKILL.md` with a trigger description. Drop them in, invoke with
-`/<skill-name>`. They reference each other but degrade gracefully if you only take some.
+`/<skill-name>`. They reference each other but degrade gracefully if you only take some. See
+[`skills/README.md`](skills/README.md) for the catalog, the three working modes
+(EXECUTING / GRILLING / COORDINATING), and how to **port skills across agent runtimes** (Codex,
+etc.).
 
 ## The 10 principles (the TL;DR of `lessons/`)
 

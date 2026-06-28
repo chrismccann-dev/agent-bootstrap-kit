@@ -67,7 +67,7 @@ Entry surface:  [which skill/session the next session enters through]
 Files likely:   [paths]
 Verification:   [how we'll know it works]
 Open questions: [only genuinely-unresolved items]
-Mode:           EXECUTING (autonomy applies) | GRILLING (ask, don't ship)
+Mode:           EXECUTING (autonomy applies) | GRILLING (ask, don't ship) | COORDINATING (delegate + own the synthesis)
 ```
 
 ## The synthesis seam

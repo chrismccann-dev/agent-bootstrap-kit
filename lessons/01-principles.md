@@ -97,3 +97,12 @@ sessions across days.
 lessons are second-order: they're about detecting and correcting drift in the system that builds
 the product. In a single-developer, agent-heavy setup, that second-order machine is what lets you
 scale past what one person can hold in their head.
+
+### A guardrail that pairs with it: don't productize too early
+
+Hardening the *source docs* of a workflow does not mean turning every workflow into an app. A repo
+with rich documented workflows makes it tempting for an agent to "helpfully" propose a CMS, a
+database, or a broad platform around them. Resist it. Source-doc coherence makes agents harder to
+confuse; it is not a mandate to build software around every process. App-ification is its own
+deliberate decision, routed through planning (principle 5) — not a side effect of writing a
+glossary. (Most relevant when adopting the kit into an existing repo — see chunk 07.)

@@ -35,6 +35,21 @@ Pattern for the scripts themselves: they should be *informational where judgment
 (print hotspots, don't fail the build) and *gating where the answer is binary* (broken link →
 fail). Don't make a judgment-call check gate CI; you'll just train yourself to ignore it.
 
+### Pick your FIRST check by the pain most likely in THIS repo
+
+Don't open with a general CI suite. The most valuable first check is the one that catches the drift
+*this specific repo* is most prone to:
+- **Doc-heavy / agent-substrate repo** → internal links resolve + required docs exist (include
+  untracked-but-staged markdown during local work).
+- **DB-heavy repo** → migration ↔ schema parity (every migration applied; every column typed).
+- **Deploy-heavy repo** → runtime bundle / build integrity (every runtime-read file traced into the
+  deploy).
+
+Add the rest as those surfaces grow. **Field caveat:** wiring a check into CI can be blocked by auth
+scope — a GitHub token without `workflow` scope will have its push *rejected* if it adds
+`.github/workflows/*.yml`. Ship the **local** `npm run check:*` script first (that's the actual
+enforcement) and add the CI hook once auth allows. (More on existing-repo rollout in chunk 07.)
+
 ---
 
 ## 2. The cross-system / "actor-trace" audit
