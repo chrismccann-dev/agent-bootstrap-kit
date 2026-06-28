@@ -1,8 +1,8 @@
 {
-  "name": "agent-repo-kit",
+  "name": "agent-bootstrap-kit",
   "version": "0.1.0",
   "description": "Patterns and skills for running a long-lived, AI-agent-driven software repo: grill-with-docs, plan-then-implement, coordinator-spawn, self-improving-skill, cross-system-audit, simplify-pass.",
   "author": "Chris McCann",
-  "homepage": "https://github.com/chrismccann-dev/agent-repo-kit",
+  "homepage": "https://github.com/chrismccann-dev/agent-bootstrap-kit",
   "license": "MIT"
 }

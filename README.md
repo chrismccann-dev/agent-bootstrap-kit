@@ -1,4 +1,4 @@
-# agent-repo-kit
+# Agent Bootstrap Kit
 
 Patterns and skills for running a long-lived, **AI-agent-driven** software repo — distilled from
 actually doing it on a real, multi-month, single-developer product. Not vibe-coding scaffolding:
@@ -21,7 +21,7 @@ This repo is a **GitHub template**. Click **"Use this template"**, or:
 
 ```bash
 # 1. start your new project from the template
-gh repo create my-new-project --template chrismccann-dev/agent-repo-kit --private --clone
+gh repo create my-new-project --template chrismccann-dev/agent-bootstrap-kit --private --clone
 cd my-new-project
 
 # 2. promote the skeleton to the repo root
