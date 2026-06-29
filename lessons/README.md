@@ -1,10 +1,11 @@
-# Agent-Native Repo Bootstrap Kit
+# Lessons - the *why* behind the kit
 
 A distilled, domain-agnostic set of lessons from building a long-running, AI-agent-driven
-single-developer product. The point: drop these patterns into a **brand-new repo with zero
-history** and skip the 6 months of learning them the hard way.
+single-developer product. The point: drop these patterns into a new repo and skip the 6 months of
+learning them the hard way. (New to the kit? Start at the [root README](../README.md) for setup;
+come here for the reasoning.)
 
-The thesis underneath all of it: **the repo is not just code — it is a substrate that an AI
+The thesis underneath all of it: **the repo is not just code - it is a substrate that an AI
 agent reads, writes, and improves.** Most of these lessons are about keeping that substrate
 coherent, loadable, and self-correcting as it compounds.
 

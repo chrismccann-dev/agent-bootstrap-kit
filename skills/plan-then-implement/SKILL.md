@@ -41,9 +41,10 @@ When in doubt, plan. "Simple" is exactly where unexamined assumptions waste the 
 
 ## Phase 2 — Implement
 
-- Once the plan is approved, **run it end-to-end** — this is EXECUTING mode, the autonomy contract
-  applies: commit, push, open PR, merge as one flow when ready. Don't stop to re-ask "should I
-  commit?" — that decision was made at approval.
+- Once the plan is approved, **run it end-to-end** — this is EXECUTING mode. To the extent your
+  repo's autonomy policy allows (see `CLAUDE.md` § Git Discipline): commit, push, open PR, merge as
+  one flow when ready, stopping at whatever line that policy sets. Don't re-ask decisions already
+  settled at plan approval — but do respect a review-gated policy if that's what the repo chose.
 - Implement against the success criteria, not vibes.
 - **Verify before committing** (see `simplify-pass` and your project's verify skill): for UI,
   screenshot each change; for logic, run it end-to-end with real input and inspect the persisted

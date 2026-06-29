@@ -1,90 +1,131 @@
 # Agent Bootstrap Kit
 
-Patterns and skills for running a long-lived, **AI-agent-driven** software repo — distilled from
-actually doing it on a real, multi-month, single-developer product. Not vibe-coding scaffolding:
-the boring, load-bearing process stuff that keeps an agent-built codebase coherent as it grows.
+A starter kit for repos where AI agents do ongoing software work.
 
-Three layers, use as much or as little as you want:
+The problem isn't getting an agent to write code. It's keeping it aligned after week six - when the
+vocabulary has drifted, the decisions live in old chat logs, and each new session rediscovers the
+repo from scratch. This kit is the boring process layer that prevents that.
 
-| Layer | What it is | Start here if… |
-|---|---|---|
-| **`lessons/`** | The *why* — 10 principles + annotated rationale for every pattern. | you want to understand before you copy. |
-| **`template/`** | Droppable skeleton — `CLAUDE.md`, `PRODUCT.md`, `docs/` tree. Fill the brackets. | you're starting a new repo today. |
-| **`skills/`** | Reusable `SKILL.md` procedures for how you *work* with the agent. | you want grill-with-docs / plan→implement / coordinator delegation. |
+It gives you three things:
 
-Inspired by [mattpocock/skills](https://github.com/mattpocock/skills) — small, adaptable,
-composable, model-agnostic. Hack on them. Make them yours.
+1. **A root agent index** - the file your agent reads every session (`CLAUDE.md`, `AGENTS.md`, or
+   your runtime's equivalent). A loading map, not an encyclopedia.
+2. **A product/system doc skeleton** - `PRODUCT.md`, `GLOSSARY.md`, ADRs, a roadmap, a shipped log,
+   and architecture references.
+3. **Reusable agent skills** - small `SKILL.md` workflows for planning, grilling, delegation,
+   audits, simplification, and handoffs.
 
-## Quickstart — new project
+Not a framework, not vibe-coding scaffolding. It turns the repo into the agent's source of truth:
+what the product is, what terms mean, how work gets planned, when the agent should ask vs execute,
+and what checks prevent drift. (The deeper idea - the repo as a *substrate* the agent reads, writes,
+and improves - is in [`lessons/`](lessons/README.md). Read that for the *why*.)
 
-This repo is a **GitHub template**. Click **"Use this template"**, or:
+Inspired by [mattpocock/skills](https://github.com/mattpocock/skills): small, adaptable, composable,
+model-agnostic. Copy what helps, delete what doesn't.
+
+## Start here
+
+| Situation | Do this |
+|---|---|
+| **Starting a new repo** | Use the GitHub template, copy `template/` to the root, fill the brackets. |
+| **Adopting into an existing repo** | Do **not** copy the whole template. Add a thin root index first, then add pieces only as friction earns them. See [`lessons/07`](lessons/07-existing-repo-adoption.md). |
+| **Only want the workflows** | Copy `skills/` into your agent runtime's skills directory. |
+
+## Quickstart - new repo
+
+This repo is a GitHub template. Click **Use this template**, or:
 
 ```bash
-# 1. start your new project from the template
 gh repo create my-new-project --template chrismccann-dev/agent-bootstrap-kit --private --clone
 cd my-new-project
 
-# 2. promote the skeleton to the repo root
-cp -r template/* template/.* . 2>/dev/null || cp -r template/* .
-mkdir -p .claude/skills && cp -r skills/* .claude/skills/
+# copy the template skeleton into the repo root
+cp -R template/. .
 
-# 3. delete the meta layers you don't need to keep in the new repo
-rm -rf template lessons        # keep skills/ -> .claude/skills already copied
+# install the skills for Claude Code (or your runtime's skills path)
+mkdir -p .claude/skills && cp -R skills/. .claude/skills/
 
-# 4. fill in CLAUDE.md and PRODUCT.md (every [bracket] is a prompt to you)
+# optional cleanup of the kit's meta folders
+rm -rf template lessons .claude-plugin   # keep skills/ too if you want repo-local source docs
 ```
 
-Then read `lessons/01-principles.md` once, and let `CLAUDE.md`'s Sprint Cadence drive how you work.
+Then:
+1. Fill in `CLAUDE.md` (or rename it to whatever your runtime loads every session, e.g. `AGENTS.md`).
+2. Fill in `PRODUCT.md`.
+3. Read [`lessons/01-principles.md`](lessons/01-principles.md) once.
+4. Start with two skills: `/plan-then-implement` and `/grill-with-docs`.
 
-> **Root index naming is tool-agnostic.** `template/CLAUDE.md` is the *content* of the always-loaded
-> root index. Rename the file to whatever your runtime loads every session: `CLAUDE.md` (Claude
-> Code), `AGENTS.md` (Codex / tool-agnostic), or your tool's equivalent.
+## Quickstart - existing repo
 
-## Adopting into an existing repo
+If the repo already has code, docs, and history, do **not** copy the greenfield template - you'll
+create duplicate surfaces that rot. Start with the smallest useful layer:
 
-If the repo already has code, docs, and history, **do not copy the greenfield template** — you'll
-create duplicate surfaces that rot. Read [`lessons/07-existing-repo-adoption.md`](lessons/07-existing-repo-adoption.md).
-Short version: inventory what's there → add a thin agent index → add one stable system doc only if
-missing → add one deterministic check (chosen by the drift this repo is most prone to) → adopt
-`grill-with-docs` first → defer the rest until friction earns it. The **minimal adopted set** is a
-thin root index, one system doc, a glossary, `docs/adr/`, one `check:docs` script, one handoff
-pattern.
+1. Add a thin root agent index (`AGENTS.md` / `CLAUDE.md` / your runtime equivalent).
+2. Point it at the docs that already exist.
+3. Add one stable system doc only if the repo is missing one.
+4. Add a glossary if terms are starting to blur.
+5. Add one deterministic `check:*` script for the drift this repo is most prone to.
+6. Adopt `grill-with-docs` first.
 
-## Install just the skills (into any repo)
+The goal is not more scaffolding. It's making future agents harder to confuse. Full path in
+[`lessons/07-existing-repo-adoption.md`](lessons/07-existing-repo-adoption.md).
 
-```bash
-mkdir -p .claude/skills
-cp -r skills/* .claude/skills/
-```
+## What you get after install
 
-Each skill is a self-contained `SKILL.md` with a trigger description. Drop them in, invoke with
-`/<skill-name>`. They reference each other but degrade gracefully if you only take some. See
-[`skills/README.md`](skills/README.md) for the catalog, the three working modes
-(EXECUTING / GRILLING / COORDINATING), and how to **port skills across agent runtimes** (Codex,
-etc.).
+- a root agent index (`CLAUDE.md` / `AGENTS.md`)
+- `PRODUCT.md` - the stable product/system doc
+- `GLOSSARY.md` - shared vocabulary
+- `docs/adr/` - architecture decision records
+- `docs/product/roadmap.md` + `docs/sprints/shipped.md` - roadmap + ship ledger
+- six skills (catalog in [`skills/README.md`](skills/README.md))
 
-## The 10 principles (the TL;DR of `lessons/`)
+## The signature workflow: grill-with-docs
 
-1. The repo is a **substrate**, not just code — shared vocab + schema must stay coherent across every reader.
+The most distinctive thing here. Before adding a new concept or building on an ambiguous term, run
+`grill-with-docs`: the agent reads the *actual* glossary and docs (greps before claiming a term is
+missing), challenges fuzzy language, asks one question at a time with a recommended answer, and
+updates the glossary or an ADR only after the decision is settled. It's the antidote to the
+definition drift that quietly breaks agent-driven repos. The lived-practice playbook -
+grep-first, analytical-vs-operational classification, the confabulation ledger, and the
+"grilling is not executing" boundary - is in
+[`skills/grill-with-docs/LIVED-EXPERIENCE.md`](skills/grill-with-docs/LIVED-EXPERIENCE.md).
+
+## The three working modes
+
+Tag every kickoff brief with the mode - it's the clearest way to tell the agent how much rope it has:
+
+- **EXECUTING** - the decision is made; complete the approved work end-to-end (subject to your
+  autonomy policy).
+- **GRILLING** - the decision is *not* made; the human's input is load-bearing. Ask, don't ship.
+- **COORDINATING** - decompose and delegate to briefed sub-agents; you own the synthesis, not the
+  unit-work.
+
+More in [`skills/README.md`](skills/README.md), including how to **port skills across runtimes**
+(Codex, etc.).
+
+## A note on autonomy
+
+The template encodes an *opinionated* default (an approved plan runs end-to-end: commit, push, PR,
+merge). That fits a solo, high-trust workflow. **It's a policy choice, not a law** - if you want a
+human review before push/PR/merge, change the Git Discipline section of `CLAUDE.md` to say so. The
+skills defer to whatever your repo's policy is.
+
+## The 10 principles (the *why*, condensed)
+
+1. The repo is a **substrate**, not just code - shared vocab + schema must stay coherent across every reader.
 2. Documentation **compounds**; it is not regenerated.
-3. **One canonical input path** per kind of data — deprecate the side doors.
-4. **Prose is insufficient — the script is the enforcement.** Turn invariants into failing CI checks.
+3. **One canonical input path** per kind of data - deprecate the side doors.
+4. **Prose is insufficient - the script is the enforcement.** Turn invariants into failing CI checks.
 5. **Plan before you code**, in proportion to interpretive risk.
 6. **State success criteria** before implementing.
-7. **Autonomy is earned per-decision** — and grilling ≠ executing.
-8. **Always-loaded context has a budget** — defend it; split by loading profile.
-9. **Close the loop**: retro → docs → next-session handoff brief.
+7. **Autonomy is earned per-decision** - and grilling != executing.
+8. **Always-loaded context has a budget** - defend it; split by loading profile.
+9. **Close the loop**: retro -> docs -> next-session handoff brief.
 10. **Delegate with explicit handoffs**; one session stays the coordinator.
 
-Full reasoning for each in [`lessons/01-principles.md`](lessons/01-principles.md).
-
-## What's deliberately not here
-
-Domain logic, framework choices, and the `check:*` scripts themselves (those are per-project —
-the lessons tell you *which* invariants to script, not a one-size implementation). And: you don't
-need all of this on day one. Start with `CLAUDE.md` + plan→implement + grill-with-docs; add the
-enforcement machinery when you feel the drift it solves.
+Full reasoning for each in [`lessons/01-principles.md`](lessons/01-principles.md); the whole lesson
+set is indexed in [`lessons/README.md`](lessons/README.md).
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT - see [LICENSE](LICENSE).

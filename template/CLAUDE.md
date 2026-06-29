@@ -28,10 +28,17 @@ inline. CLAUDE.md is the index, not the encyclopedia.]
 
 ## Git Discipline
 
-- **Approved or planned work** (plan approved, explicit "go for it"): commit + push + open PR +
-  merge autonomously as one flow when ready. No second sign-off round. End the message with the
-  merged-PR URL + main-branch SHA.
-- **Unscoped or ambiguous work**: ask first before committing.
+**Pick your autonomy policy** - this is a choice, not a default to inherit. The two ends of the dial:
+- *High-trust (solo / fast):* approved or planned work runs end-to-end - commit + push + open PR +
+  merge as one flow when ready, no second sign-off round. End the message with the merged-PR URL +
+  main-branch SHA.
+- *Review-gated (team / cautious):* the agent may commit + push + open a PR, but **stops before
+  merge** for human review. Or stops before push. Set the line where you want it and state it here.
+
+[Delete whichever end you don't want and keep the rule explicit - the skills defer to whatever this
+section says.]
+
+- **Unscoped or ambiguous work**: ask first before committing, regardless of policy.
 - Before starting, verify the branch is up to date with main (many PRs may have landed).
 - Never reset a branch without confirming via reflog that recoverable work is preserved.
 - [Commit-message trailer / co-author convention, if any.]
