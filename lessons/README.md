@@ -9,33 +9,35 @@ The thesis underneath all of it: **the repo is not just code - it is a substrate
 agent reads, writes, and improves.** Most of these lessons are about keeping that substrate
 coherent, loadable, and self-correcting as it compounds.
 
-## How to use this kit
+> Setup/copy commands live in the [root README](../README.md). This index is just the reading map
+> for the *why*.
 
-**Greenfield repo (no history):**
-1. Read `01-principles.md` first — it's the *why*. Everything else is mechanism.
-2. Copy `02-claude-md-template.md` → your repo's `CLAUDE.md` (or `AGENTS.md` / your runtime's
-   always-loaded root) and fill the brackets.
-3. Copy `03-product-md-template.md` → your repo's `PRODUCT.md`.
-4. Set up the docs tree from `04-docs-structure.md`.
-5. Stand up the skills in `05-skills-patterns.md` as you need them (don't build all of them day one).
-6. Use `06-enforcement-and-audit.md` once you have enough surface area that drift becomes real.
+## The lessons — read when
 
-**Existing repo (already has code + docs):** do **not** copy the template blindly — read
-`07-existing-repo-adoption.md`. The sequence is inventory → thin agent index → one system doc (if
-missing) → one deterministic check → `grill-with-docs` first → defer the rest. The principles
-(chunk 01) are identical; only the rollout differs.
-
-## The chunks
-
-| File | What it covers |
+| Lesson | Read when |
 |---|---|
-| `01-principles.md` | The 10 load-bearing ideas. Read this even if you read nothing else. |
-| `02-claude-md-template.md` | Annotated `CLAUDE.md` (agent system prompt) skeleton. |
-| `03-product-md-template.md` | Annotated `PRODUCT.md` skeleton + roadmap split. |
-| `04-docs-structure.md` | The `docs/` tree, ADRs, features/sprint recaps, glossary, memory. |
-| `05-skills-patterns.md` | grill-with-docs, self-improving skills, plan→implement, coordinator-spawn, + others. |
-| `06-enforcement-and-audit.md` | Check-scripts-as-enforcement, six-actor audit, tripwires, the gotchas. |
-| `07-existing-repo-adoption.md` | Adopting the kit into a repo that already exists — the minimal adopted set, first-check-by-pain, "don't productize too early." |
+| `01-principles.md` | You want the mental model behind the kit. **Start here.** |
+| `02-claude-md-template.md` | You're writing the root agent index (`CLAUDE.md` / `AGENTS.md` / equivalent). |
+| `03-product-md-template.md` | You're defining what the product is, why it exists, and what should stay stable. |
+| `04-docs-structure.md` | You're setting up the `docs/` tree and deciding what belongs where. |
+| `05-skills-patterns.md` | You want the reusable workflows: planning, grilling, delegation, audits, handoffs. |
+| `06-enforcement-and-audit.md` | The repo is big enough to drift and prose reminders aren't enough. |
+| `07-existing-repo-adoption.md` | You're adding the kit to a repo that already has code, docs, and history. |
+
+- **New repo?** Read 01-05 first.
+- **Existing repo?** Read **01 and 07 first** — and do *not* copy the greenfield template blindly.
+
+## Vocabulary used in this kit
+
+The recurring house terms, defined once:
+
+- **Root index** — the file your agent reads every session (`CLAUDE.md` / `AGENTS.md` / equivalent).
+- **Substrate** — the shared repo material agents and humans both rely on: docs, schema, prompts,
+  workflows, memory, checks.
+- **Grill** — an interview-style session that locks vocabulary or decisions *before* execution.
+- **Always-loaded context** — content the agent reads on every session (vs on-demand reference).
+- **Actor-trace** — checking every system that reads or writes a shared concept before shipping a
+  change to it.
 
 ## What's deliberately NOT here
 

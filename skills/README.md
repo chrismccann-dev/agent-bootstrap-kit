@@ -1,8 +1,15 @@
 # skills/
 
-Reusable `SKILL.md` procedures for *how you work with the agent* — not domain logic. Each is
-self-contained with a trigger `description`. They reference each other but degrade gracefully if you
-only take some.
+A skill is a small markdown procedure an agent invokes when the task matches its trigger. Not an
+app, a package, or a framework — just a reusable working pattern for *how you work with the agent*,
+not domain logic. Each is a self-contained `SKILL.md` with a trigger `description`; they reference
+each other but degrade gracefully if you only take some.
+
+**Start with two**, add the rest only when the friction appears:
+1. `plan-then-implement/` — for any non-trivial change.
+2. `grill-with-docs/` — when vocabulary, product meaning, or system boundaries are ambiguous. (A
+   *grill* is an interview-style session where the agent challenges terms, assumptions, and decision
+   boundaries *before* anything ships.)
 
 | Skill | What it's for |
 |---|---|
@@ -12,6 +19,14 @@ only take some.
 | `self-improving-skill/` | Skills update their own `SKILL.md` after each run. |
 | `cross-system-audit/` | Trace a substrate change through every actor before the PR. |
 | `simplify-pass/` | Quality-only dedup / de-over-engineer pass before commit. |
+
+### Adopt in this order
+
+| Tier | Skills | When |
+|---|---|---|
+| **Start here** | `plan-then-implement`, `grill-with-docs` | day one |
+| **Add soon** | `simplify-pass`, `cross-system-audit` | once you're shipping real changes |
+| **Advanced** | `coordinator-spawn`, `self-improving-skill` | when work outgrows one context / skills need tending |
 
 ## Install
 

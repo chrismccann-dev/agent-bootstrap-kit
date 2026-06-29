@@ -37,6 +37,12 @@ shape whether the workers are sub-agents in one session or separate sessions acr
    - **what to return** — "return a structured result: {finding, file, line, confidence}", not "go
      fix it." Workers should return *conclusions*, not raw file dumps.
 
+   *Bad brief (leaky, vague):* "Continue the work from above and audit the docs."
+   *Good brief (cold, scoped, structured):* "Read `PRODUCT.md`, `GLOSSARY.md`, and
+   `docs/architecture/data-model.md`. Return a table of `{term, current definition, conflicting
+   usage, recommended action}`. Do not edit files." The good one stands alone and tells the worker
+   exactly what shape to return.
+
 3. **Spawn.** Run independent units in parallel. If workers mutate files concurrently, isolate each
    in its own worktree to avoid conflicts.
 

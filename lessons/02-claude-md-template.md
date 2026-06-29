@@ -1,5 +1,8 @@
 # CLAUDE.md Template (the agent system prompt)
 
+*Read this if you're writing the root agent index — `CLAUDE.md`, `AGENTS.md`, or whatever your
+runtime loads every session.*
+
 `CLAUDE.md` is loaded into **every** session. It is the most expensive real estate you own —
 every token here is paid on every turn. Rule of thumb: **CLAUDE.md should tell the agent who it
 is, where everything is, and how to behave — and push all detail into on-demand docs it can
@@ -128,7 +131,7 @@ checkpoints on every non-trivial unit of work:
    with real input.] "It should work" is not verification.
 4. **Cross-system audit before PR.** If this changed shared substrate (a term, a schema field, a
    tool, a registry entry, a vocabulary word), trace it through every consumer before declaring
-   done. (See `06-enforcement-and-audit.md` for the actor-trace template.)
+   done. (See lesson 06 — Enforcement, Audit & the Gotchas — for the actor-trace template.)
 5. **Simplify before commit.** One pass for duplication / over-engineering after implementation
    is done. Agents over-engineer; catch it before it's tech debt.
 6. **Retro before docs.** List what didn't work / what surprised us / what we'd do differently.

@@ -1,5 +1,8 @@
 # PRODUCT.md Template (the product-system index)
 
+*Read this if you're defining what the product is, why it exists, and what should stay stable as
+the roadmap churns around it.*
+
 Where `CLAUDE.md` is "how the agent behaves," `PRODUCT.md` is "what we're building and why."
 It's the durable description of the product as a system. It is also a living doc — hand-edited
 when the mental model shifts.
@@ -81,7 +84,7 @@ This file does not hold the roadmap — it points at it. [See "Roadmap hygiene" 
 
 [The thresholds at which you'll need to refactor the *substrate* (not the product): "when
 CLAUDE.md crosses N KB, split it"; "when tool count crosses N, consolidate"; "when this doc
-crosses N KB, prune." This is the tripwire registry's home. See 06-enforcement-and-audit.md.]
+crosses N KB, prune." This is the tripwire registry's home. See lesson 06.]
 ```
 
 ---
@@ -122,4 +125,4 @@ A reverse-chronological, one-line-per-ship ledger:
 ```
 
 This is the cheap, scannable audit trail. The full narrative of any ship lives in its feature
-recap doc (see `04-docs-structure.md`); shipped.md is just the index into them.
+recap doc (see lesson 04); shipped.md is just the index into them.

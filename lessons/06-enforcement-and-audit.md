@@ -1,6 +1,9 @@
 # Enforcement, Audit & the Gotchas
 
-This chunk is the second-order machine — the stuff that keeps the substrate honest as it grows.
+*Read this when the repo is big enough that prose reminders stop working — when you need
+deterministic checks, drift-tracing, and the hard-won gotchas, not more good intentions.*
+
+This lesson is the second-order machine — the stuff that keeps the substrate honest as it grows.
 It's the highest-value, least-obvious material in the kit. None of it is needed on day one; all of
 it earns its place once the repo is big enough to drift behind your back.
 
@@ -31,6 +34,10 @@ The meta-lesson, learned the hard way more than once: **a rule that bit you twic
 script, not a third prose reminder.** The script is the enforcement; the prose is just
 documentation of the script.
 
+*Example:* an internal doc link broke silently in review more than once. The fix wasn't "remember
+to check links" — it was a `check:doc-links` script that resolves every link + `#anchor` and fails
+CI the instant one 404s. The reminder stopped being needed.
+
 Pattern for the scripts themselves: they should be *informational where judgment is needed*
 (print hotspots, don't fail the build) and *gating where the answer is binary* (broken link →
 fail). Don't make a judgment-call check gate CI; you'll just train yourself to ignore it.
@@ -48,7 +55,7 @@ Don't open with a general CI suite. The most valuable first check is the one tha
 Add the rest as those surfaces grow. **Field caveat:** wiring a check into CI can be blocked by auth
 scope — a GitHub token without `workflow` scope will have its push *rejected* if it adds
 `.github/workflows/*.yml`. Ship the **local** `npm run check:*` script first (that's the actual
-enforcement) and add the CI hook once auth allows. (More on existing-repo rollout in chunk 07.)
+enforcement) and add the CI hook once auth allows. (More on existing-repo rollout in lesson 07.)
 
 ---
 

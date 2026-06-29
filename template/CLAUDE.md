@@ -1,9 +1,9 @@
 # [Project Name]
 
-[2-4 sentences: what this repo is, who it's for, the single big goal. State the North Star — the
-thing every decision should serve. If single-user / single-tenant, say so; it changes a lot of
-architecture decisions. If there's one canonical input path or one core workflow, name it here in
-the first paragraph.]
+<!-- Delete any section that doesn't apply. The goal is a short, accurate root context, not a
+complete-looking file — always-loaded context is expensive. Fuller guidance: lessons/02. -->
+
+[2-4 sentences: what this repo is, who it serves, and the North Star.]
 
 ## Documentation Index
 

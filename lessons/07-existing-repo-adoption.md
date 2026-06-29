@@ -1,11 +1,15 @@
 # Adopting the Kit into an Existing Repo
 
+*Read this **before copying anything** into a repo that already has code, docs, and history. The
+short version: don't copy the greenfield template — add the thinnest layer that reduces agent
+confusion, and earn the rest.*
+
 The rest of this kit reads as a greenfield template — copy `template/`, fill the brackets, go. But
 the more common case is a repo that **already exists**: it has working code, scattered handoffs,
 some docs, real safety rules, and live history. Copying the greenfield template into it is a
 mistake — you'd create duplicate surfaces that immediately rot.
 
-This chunk is the **existing-repo path**. It was written from a real adoption: a photography repo
+This lesson is the **existing-repo path**. It was written from a real adoption: a photography repo
 with a public portfolio, private archive tooling, curator/AI-edit workflow docs, and provenance
 safety rules. The useful question there was never "copy the template" — it was *"what is the
 smallest source-doc system that makes future agents harder to confuse?"* That's the right question
@@ -104,9 +108,9 @@ software around every documented process. When in doubt, the workflow stays a do
 app-ification is its own deliberate decision, routed through planning, not a side effect of writing
 a glossary.
 
-## How this maps to the greenfield chunks
+## How this maps to the greenfield lessons
 
-| Greenfield (chunks 02-06) | Existing-repo equivalent |
+| Greenfield (lessons 02-06) | Existing-repo equivalent |
 |---|---|
 | Copy `template/CLAUDE.md` | Write a thin `AGENTS.md`/`CLAUDE.md` index over what's already there |
 | Copy `template/PRODUCT.md` | Add one stable system doc *only if missing*; else point the index at the existing one |
@@ -114,5 +118,5 @@ a glossary.
 | All six skills | `grill-with-docs` first; others on friction |
 | Full tripwire registry + check suite | One check, chosen by the repo's most-likely drift |
 
-The principles (chunk 01) are identical in both worlds. Only the *rollout* differs: greenfield
+The principles (lesson 01) are identical in both worlds. Only the *rollout* differs: greenfield
 installs the scaffolding up front; an existing repo earns each piece.

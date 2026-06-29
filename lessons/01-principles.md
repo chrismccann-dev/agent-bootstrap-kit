@@ -1,5 +1,8 @@
 # The 10 Load-Bearing Principles
 
+*Read this if you want the mental model behind the kit — why it's structured around docs, skills,
+checks, and handoffs. This is the "why"; the other lessons are the "how."*
+
 These are the ideas that, in hindsight, did the most work. Mechanism comes later; this is the
 mental model. Each is stated generically with the reasoning, so you can re-derive the specifics
 for a new domain.
@@ -14,6 +17,10 @@ chat/web client, CI). A change to a shared *concept* — a term, a schema field,
 propagates to all of them. **Treat shared vocabulary and shared schema as first-class artifacts
 that must stay coherent across every reader.** Most bugs in an agent-driven system are not logic
 bugs; they're a definition that got updated in one place and not the others.
+
+*Example:* renaming a status field isn't just a code change. It touches the schema, the UI labels,
+import scripts, prompts, the glossary, and any external client that reads the field. Miss one and
+you get silent corruption, not a compile error.
 
 ## 2. Documentation compounds; it is not generated
 
@@ -72,6 +79,10 @@ a thin index + redirect stub behind. The goal: a fresh session loads only what i
 and can pull the rest on demand. An always-loaded doc that's mostly irrelevant to the current
 task is a tax on every single session.
 
+*Example:* a 60 KB root instruction file that inlines every schema detail makes every *unrelated*
+task slower and noisier. Keep the index thin; move the deep detail behind links the agent opens
+only when it's working on that surface.
+
 ## 9. Close the loop: retro → docs → next-session handoff
 
 Every non-trivial unit of work ends with three artifacts: (a) a retro (what surprised us, what
@@ -93,10 +104,11 @@ sessions across days.
 
 ### The meta-principle
 
-**Build the machine that keeps the substrate honest, not just the product.** Half of these
-lessons are second-order: they're about detecting and correcting drift in the system that builds
-the product. In a single-developer, agent-heavy setup, that second-order machine is what lets you
-scale past what one person can hold in their head.
+**Build the machine that keeps the substrate honest, not just the product.** In practice that means
+the checks, indexes, glossaries, ADRs, and handoffs that catch drift before it becomes broken code
+or corrupted data. Half of these lessons are second-order: they're about detecting and correcting
+drift in the system that builds the product. In a single-developer, agent-heavy setup, that
+second-order machine is what lets you scale past what one person can hold in their head.
 
 ### A guardrail that pairs with it: don't productize too early
 
@@ -105,4 +117,4 @@ with rich documented workflows makes it tempting for an agent to "helpfully" pro
 database, or a broad platform around them. Resist it. Source-doc coherence makes agents harder to
 confuse; it is not a mandate to build software around every process. App-ification is its own
 deliberate decision, routed through planning (principle 5) — not a side effect of writing a
-glossary. (Most relevant when adopting the kit into an existing repo — see chunk 07.)
+glossary. (Most relevant when adopting the kit into an existing repo — see lesson 07.)

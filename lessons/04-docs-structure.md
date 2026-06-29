@@ -1,10 +1,13 @@
 # The docs/ Structure & Conventions
 
+*Read this if you're setting up the `docs/` tree and deciding what belongs where (and what should
+be always-loaded vs pulled on demand).*
+
 The docs tree is the agent's external memory. The rules that make it work:
 
 1. **Every doc is reachable from the Documentation Index in CLAUDE.md.** A doc the agent can't
    find via the index effectively doesn't exist. When you add a doc, add its index line in the
-   same change. (Worth a `check:*` script once you have many — see chunk 06.)
+   same change. (Worth a `check:*` script once you have many — see lesson 06.)
 2. **Each doc states "read when…"** so the agent knows whether to pull it for the current task.
 3. **Tier docs by loading profile.** Always-loaded (root) vs on-demand (docs/). Keep the
    always-loaded set small and push detail down.
@@ -29,13 +32,13 @@ The docs tree is the agent's external memory. The rules that make it work:
     data-model.md               # per-column / per-relationship detail
     page-ia.md                  # per-surface UI information architecture
     <surface>.md                # one per surface you touch repeatedly
-    doc-tripwires.md            # the size-cap registry (see chunk 06)
+    doc-tripwires.md            # the size-cap registry (see lesson 06)
   features/                     # per-sprint scoping + recap docs (the work log)
     YYYY-MM-DD-<feature>.md
   sprints/
     shipped.md                  # reverse-chrono one-line ledger of every ship
     <retros, grilling records>
-  design-system.md              # full token map / palette / component reference
+  design-system.md              # UI-heavy products only: token map / palette / components
   prompts/                      # operational prompts, if you drive flows from prose
 ```
 
@@ -90,7 +93,7 @@ Rules:
 - **Define each term once, canonically.** Everything else refers to it.
 - **Strict format:** term definition + cardinality/relationship to other terms. NO implementation
   detail — that rots. Just "what this word means and how it relates to the others."
-- **Grow it incrementally** via grilling sessions (chunk 05), not in one big authoring push. Terms
+- **Grow it incrementally** via grilling sessions (lesson 05), not in one big authoring push. Terms
   earn their place when ambiguity actually surfaces.
 - If it gets big, **split by zone/subdomain** so a session loads only the vocabulary it needs, with
   a thin index doc tying them together.

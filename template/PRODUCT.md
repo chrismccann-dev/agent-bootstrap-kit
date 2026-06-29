@@ -1,5 +1,8 @@
 # [Project Name] — Product
 
+<!-- Delete any section that doesn't apply. A short, accurate doc beats a complete-looking one full
+of guesses. Sections marked (optional) are safe to remove for many projects. Fuller guidance: lessons/03. -->
+
 ## Purpose
 
 [The North Star. What does this product exist to do, for whom, and what does "winning" look like?
@@ -27,22 +30,22 @@ non-goals prevents scope creep.]
 [The conceptual model — entities and how they relate — at a higher altitude than CLAUDE.md's roster.
 Link docs/architecture/data-model.md for column-level detail.]
 
-## Canonical Registries / Controlled Vocabularies
+## Canonical Registries / Controlled Vocabularies (optional)
 
 [If applicable: the controlled axes, where each source-of-truth lives, the rule that authored list
 is canonical and code mirrors it.]
 
-## AI / Synthesis (if your product uses LLMs internally)
+## AI / Synthesis (optional — only if your product uses LLMs internally)
 
 [How the product itself calls models: which model, pipeline shape, where prompts live, how outputs
 are cached/invalidated, what vocabulary must survive any rewrite passes.]
 
-## Current App State
+## Current App State (optional; date-stamped)
 
 [Short "where are we" — shipped + live, stubbed, deprecated. Keep terse + date-stamped, or push to
 the roadmap/shipped log entirely.]
 
-## Design System
+## Design System (optional — UI products)
 
 [One paragraph + a pointer to the full design doc. Don't duplicate the token map here.]
 

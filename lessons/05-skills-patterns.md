@@ -1,5 +1,8 @@
 # Generic, Repeatable Skills
 
+*Read this if you want the reusable working patterns — planning, grilling, delegation, audits,
+simplification, handoffs — and the rules for authoring your own.*
+
 Skills are reusable, named procedures the agent can invoke (`/skill-name`). The lesson from a
 long-running repo: **a handful of meta-skills about *how you work* pay off far more than
 domain-specific automation.** Build these four first; add domain skills later.
@@ -58,7 +61,7 @@ it. Bake the improvement loop in and the skill converges on something good witho
   dramatically better than its v1 — for free.
 
 **Guardrail:** treat a self-edit to a skill as a substrate change — if the skill is referenced
-elsewhere, audit those references (chunk 06).
+elsewhere, audit those references (lesson 06).
 
 ---
 
@@ -120,7 +123,7 @@ parallel.
   worktrees when they mutate files concurrently.)
 - **Coordinator rolls up:** reviews each result, reconciles conflicts, owns the final conclusion.
   It does NOT just concatenate outputs — it judges them.
-- **Hand back to a human** at the decision points the contract reserves for a human (chunk 06,
+- **Hand back to a human** at the decision points the contract reserves for a human (lesson 06,
   autonomy).
 
 **When to reach for it:** any task that (a) won't fit one context, (b) decomposes into independent
