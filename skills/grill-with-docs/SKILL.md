@@ -15,6 +15,11 @@ highest-leverage investment in an agent-driven repo - it's how you and the agent
 each other and how the agent stays consistent across sessions. This skill is the antidote to silent
 definition drift.
 
+> **Credit:** the original `grill-with-docs` skill is by **Matt Pocock**
+> ([mattpocock/skills](https://github.com/mattpocock/skills/blob/main/skills/engineering/grill-with-docs/SKILL.md)).
+> This version keeps his protocol and adds a lived-experience layer (the discipline rules, the
+> grilling-vs-executing boundary, the standalone fallback) from running it across real repos.
+
 > **Read [`LIVED-EXPERIENCE.md`](./LIVED-EXPERIENCE.md) before a serious grill.** This `SKILL.md` is
 > the protocol; the lived-experience doc carries the discipline rules (grep-first, analytical-vs-
 > operational, confabulation ledger), the grilling-vs-executing mode boundary, and a standalone

@@ -1,10 +1,11 @@
 # grill-with-docs - Lived Experience
 
-The `SKILL.md` next to this file is the protocol. This doc is the **operating layer that emerged
-from ~15+ real grilling sessions** on a long-running agent-driven repo, plus a second repo's first
-adoption. The protocol is ~20% of the value; the discipline rules and the mode judgment are the
-other 80% - and they're where every failure actually happened. Read this before running a serious
-grill.
+The `SKILL.md` next to this file is the protocol - originally created by **Matt Pocock**
+([mattpocock/skills](https://github.com/mattpocock/skills/blob/main/skills/engineering/grill-with-docs/SKILL.md)).
+This doc is the **operating layer that emerged from ~15+ real grilling sessions** on a long-running
+agent-driven repo, plus a second repo's first adoption. The protocol is ~20% of the value; the
+discipline rules and the mode judgment are the other 80% - and they're where every failure actually
+happened. Read this before running a serious grill.
 
 ## Why it exists
 
