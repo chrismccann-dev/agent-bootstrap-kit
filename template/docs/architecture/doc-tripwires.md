@@ -11,10 +11,10 @@ thin index/redirect stub**, not delete. Split by loading profile.
 
 | Surface | Loading profile | Cap | Current |
 |---|---|---|---|
-| `CLAUDE.md` | every session | [40] KB | [—] |
-| `PRODUCT.md` | read early | [40] KB | [—] |
-| `GLOSSARY.md` | as needed | [40] KB | [—] |
-| [other always-loaded doc] | [profile] | [cap] | [—] |
+| `CLAUDE.md` | every session | [40] KB | [-] |
+| `PRODUCT.md` | read early | [40] KB | [-] |
+| `GLOSSARY.md` | as needed | [40] KB | [-] |
+| [other always-loaded doc] | [profile] | [cap] | [-] |
 
 ## Other tripwires worth registering
 - **Tool/endpoint count** crosses [N] → consider consolidating tools.

@@ -4,7 +4,7 @@
 the roadmap churns around it.*
 
 Where `CLAUDE.md` is "how the agent behaves," `PRODUCT.md` is "what we're building and why."
-It's the durable description of the product as a system. It is also a living doc — hand-edited
+It's the durable description of the product as a system. It is also a living doc - hand-edited
 when the mental model shifts.
 
 Key split lesson: **the high-change surfaces (roadmap, open issues) do NOT belong inside
@@ -15,7 +15,7 @@ should be stable enough that you edit it only when the model genuinely changes.
 ---
 
 ```markdown
-# [Project Name] — Product
+# [Project Name] - Product
 
 ## Purpose
 
@@ -28,13 +28,13 @@ trace back to this.]
 
 [The 1-3 workflows that ARE the product. For each: the trigger, the steps, where data enters,
 where it lands, who/what does each step. This is the most useful section for orienting a new
-session — it's the verbs of the system.]
+session - it's the verbs of the system.]
 
-- **[Workflow A]** — [trigger → steps → output. Note the canonical input path.]
-- **[Workflow B]** — [...]
+- **[Workflow A]** - [trigger → steps → output. Note the canonical input path.]
+- **[Workflow B]** - [...]
 
-[If different workflows have different *shapes* — e.g. one is iterative/streaming, another is
-batch/archival — call that out explicitly. The shape drives the architecture.]
+[If different workflows have different *shapes* - e.g. one is iterative/streaming, another is
+batch/archival - call that out explicitly. The shape drives the architecture.]
 
 ## Product Boundaries
 
@@ -44,7 +44,7 @@ want.]
 
 ## Data Model
 
-[The conceptual model — entities and how they relate — at a higher altitude than CLAUDE.md's
+[The conceptual model - entities and how they relate - at a higher altitude than CLAUDE.md's
 roster. Link to docs/architecture/data-model.md for column-level detail.]
 
 ## Canonical Registries / Controlled Vocabularies
@@ -60,7 +60,7 @@ Keep the every-session shape here; push prompt-engineering detail to a reference
 
 ## Current App State
 
-[A short "where are we" — what's shipped and live, what's stubbed, what's deprecated. This drifts,
+[A short "where are we" - what's shipped and live, what's stubbed, what's deprecated. This drifts,
 so keep it terse and date-stamped, or push it to the roadmap/shipped log entirely.]
 
 ## Design System
@@ -69,12 +69,12 @@ so keep it terse and date-stamped, or push it to the roadmap/shipped log entirel
 
 ## Architecture
 
-[Conceptual architecture — the boxes and arrows. Link CLAUDE.md / docs for the concrete stack.]
+[Conceptual architecture - the boxes and arrows. Link CLAUDE.md / docs for the concrete stack.]
 
 ## Roadmap
 
 → Lives in **[docs/product/roadmap.md](docs/product/roadmap.md)** (current + next + future only).
-This file does not hold the roadmap — it points at it. [See "Roadmap hygiene" below.]
+This file does not hold the roadmap - it points at it. [See "Roadmap hygiene" below.]
 
 ## Open Issues / Known Gaps
 
@@ -97,7 +97,7 @@ Keep the roadmap as its own file, `docs/product/roadmap.md`, with three live sec
 # Roadmap
 
 ## Active (in flight now)
-- [item — one line, link to the feature/sprint doc]
+- [item - one line, link to the feature/sprint doc]
 
 ## On deck (next up)
 - [...]
@@ -113,7 +113,7 @@ Keep the roadmap as its own file, `docs/product/roadmap.md`, with three live sec
 
 The discipline that matters: **when you ship from the roadmap, in the same commit you (a) remove
 it from the roadmap and (b) add a one-line entry to `docs/sprints/shipped.md`.** This keeps
-"what's queued" and "what's done" from drifting apart — the single most common doc-rot in a
+"what's queued" and "what's done" from drifting apart - the single most common doc-rot in a
 roadmap-driven repo. Make it a checklist item in your sprint cadence (it's checkpoint 4's sibling).
 
 ## shipped.md
@@ -121,7 +121,7 @@ roadmap-driven repo. Make it a checklist item in your sprint cadence (it's check
 A reverse-chronological, one-line-per-ship ledger:
 
 ```markdown
-- YYYY-MM-DD — **[Sprint/feature name]** — [the landmark, one line] (PR #NN)
+- YYYY-MM-DD - **[Sprint/feature name]** - [the landmark, one line] (PR #NN)
 ```
 
 This is the cheap, scannable audit trail. The full narrative of any ship lives in its feature

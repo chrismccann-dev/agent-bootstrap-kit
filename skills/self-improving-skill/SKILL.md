@@ -2,7 +2,7 @@
 name: self-improving-skill
 description: >
   At the end of any skill invocation, look back at that skill's own SKILL.md and propose small,
-  additive improvements based on the friction just encountered — so skills compound like docs do.
+  additive improvements based on the friction just encountered - so skills compound like docs do.
   Use as the closing step of every other skill, or when a skill felt awkward / underspecified /
   missing a gotcha mid-run. Trigger phrases: "improve this skill", "what was awkward about that
   skill", "update the skill from what we just learned".
@@ -12,7 +12,7 @@ description: >
 
 The first version of any skill is wrong in ways you only discover by running it. Bake the
 improvement loop in, and each skill converges on something good without a dedicated "go improve the
-skills" project. A skill run 20 times and improved each time is dramatically better than its v1 —
+skills" project. A skill run 20 times and improved each time is dramatically better than its v1 -
 for free.
 
 ## When
@@ -32,7 +32,7 @@ underspecified, ambiguous, or missing a warning mid-run.
 2. **Propose a concrete edit to the `SKILL.md`.** Small and additive by default: a clarified step, a
    new gotcha bullet, a removed dead branch, a sharpened trigger description. Show the diff.
 
-3. **Apply per the autonomy contract.** A self-edit to a skill is a tiny, low-risk improvement —
+3. **Apply per the autonomy contract.** A self-edit to a skill is a tiny, low-risk improvement -
    apply it directly if your contract allows, or surface it for one-line approval. Don't sit on it;
    the value is in capturing the friction while it's fresh.
 
@@ -47,7 +47,7 @@ underspecified, ambiguous, or missing a warning mid-run.
 - **Don't over-fit to one weird run.** If the friction was a one-off (bad input, unusual repo), note
   it but don't bake a special case into the general skill.
 - **Keep the trigger description honest.** The `description:` field is how the agent decides to reach
-  for the skill — if you found yourself wanting this skill and it didn't trigger, fix the
+  for the skill - if you found yourself wanting this skill and it didn't trigger, fix the
   description, not just the body.
 
 ## Output

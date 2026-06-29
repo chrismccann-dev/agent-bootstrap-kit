@@ -96,7 +96,7 @@ Tag every kickoff brief with the mode - it's the clearest way to tell the agent 
 
 - **EXECUTING** - the decision is made; complete the approved work end-to-end (subject to your
   autonomy policy).
-- **GRILLING** - the decision is *not* made; the human's input is load-bearing. Ask, don't ship.
+- **GRILLING** - the decision is *not* made; the human's input is the important signal. Ask, don't ship.
 - **COORDINATING** - decompose and delegate to briefed sub-agents; you own the synthesis, not the
   unit-work.
 

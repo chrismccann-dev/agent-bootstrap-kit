@@ -11,7 +11,7 @@ description: >
 # coordinator-spawn
 
 Context is finite; a big job done in one window degrades as it fills. This skill keeps one session
-as the **coordinator** that decomposes, delegates, and judges — while the actual work happens in
+as the **coordinator** that decomposes, delegates, and judges - while the actual work happens in
 fresh, briefed sub-contexts that never see each other.
 
 This is the same primitive as `plan-then-implement`'s large-scale implement phase, and the same
@@ -21,20 +21,20 @@ shape whether the workers are sub-agents in one session or separate sessions acr
 
 - The task won't fit one context (a migration across many files, a repo-wide audit).
 - It decomposes into **independent** units that can run in parallel.
-- You want **independent verification** — e.g. spawn several skeptics to try to refute a finding
+- You want **independent verification** - e.g. spawn several skeptics to try to refute a finding
   before you trust it.
 
 ## Procedure (as the coordinator)
 
 1. **Decompose into independent units.** Each unit should be doable without the others' results. If
-   unit B needs unit A's output, that's a pipeline, not a fan-out — sequence it explicitly.
+   unit B needs unit A's output, that's a pipeline, not a fan-out - sequence it explicitly.
 
 2. **Write a self-contained brief per unit.** The sub-agent has **none** of your conversation.
    Include:
    - the goal and the success criteria,
    - the exact files/paths and any context it needs,
    - constraints (don't touch X; match the style of Y),
-   - **what to return** — "return a structured result: {finding, file, line, confidence}", not "go
+   - **what to return** - "return a structured result: {finding, file, line, confidence}", not "go
      fix it." Workers should return *conclusions*, not raw file dumps.
 
    *Bad brief (leaky, vague):* "Continue the work from above and audit the docs."
@@ -46,19 +46,19 @@ shape whether the workers are sub-agents in one session or separate sessions acr
 3. **Spawn.** Run independent units in parallel. If workers mutate files concurrently, isolate each
    in its own worktree to avoid conflicts.
 
-4. **Roll up — and judge, don't concatenate.** Read each result, reconcile conflicts, drop the ones
+4. **Roll up - and judge, don't concatenate.** Read each result, reconcile conflicts, drop the ones
    that don't hold up, dedupe overlap. The coordinator **owns the final conclusion.** A roll-up that
    just pastes every worker's output together has skipped the actual job.
 
 5. **Verify the synthesis.** For high-stakes findings, run an adversarial pass: spawn verifiers
    prompted to *refute* each surviving claim; keep only what survives a majority.
 
-6. **Hand back to the human** at the decision points your autonomy contract reserves — irreversible
+6. **Hand back to the human** at the decision points your autonomy contract reserves - irreversible
    or interpretive calls.
 
 ## Anti-patterns
 
-- **Leaky briefs.** "Continue what we discussed" — the sub-agent didn't discuss anything. Brief
+- **Leaky briefs.** "Continue what we discussed" - the sub-agent didn't discuss anything. Brief
   cold, every time.
 - **Workers that return prose, not data.** Ask for structured results so the roll-up is mechanical.
 - **Coordinator that loses the thread.** The whole point is that one context stays authoritative.

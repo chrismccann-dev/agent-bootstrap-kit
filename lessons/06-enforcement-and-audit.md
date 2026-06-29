@@ -1,9 +1,9 @@
 # Enforcement, Audit & the Gotchas
 
-*Read this when the repo is big enough that prose reminders stop working — when you need
+*Read this when the repo is big enough that prose reminders stop working - when you need
 deterministic checks, drift-tracing, and the hard-won gotchas, not more good intentions.*
 
-This lesson is the second-order machine — the stuff that keeps the substrate honest as it grows.
+This lesson is the second-order machine - the stuff that keeps the substrate honest as it grows.
 It's the highest-value, least-obvious material in the kit. None of it is needed on day one; all of
 it earns its place once the repo is big enough to drift behind your back.
 
@@ -35,7 +35,7 @@ script, not a third prose reminder.** The script is the enforcement; the prose i
 documentation of the script.
 
 *Example:* an internal doc link broke silently in review more than once. The fix wasn't "remember
-to check links" — it was a `check:doc-links` script that resolves every link + `#anchor` and fails
+to check links" - it was a `check:doc-links` script that resolves every link + `#anchor` and fails
 CI the instant one 404s. The reminder stopped being needed.
 
 Pattern for the scripts themselves: they should be *informational where judgment is needed*
@@ -53,7 +53,7 @@ Don't open with a general CI suite. The most valuable first check is the one tha
   deploy).
 
 Add the rest as those surfaces grow. **Field caveat:** wiring a check into CI can be blocked by auth
-scope — a GitHub token without `workflow` scope will have its push *rejected* if it adds
+scope - a GitHub token without `workflow` scope will have its push *rejected* if it adds
 `.github/workflows/*.yml`. Ship the **local** `npm run check:*` script first (that's the actual
 enforcement) and add the CI hook once auth allows. (More on existing-repo rollout in lesson 07.)
 
@@ -86,11 +86,11 @@ Did this change land in...
 [ ] the operational prompts that use this field/vocabulary?
 [ ] the external client's view (will it see the new tool on next catalog refresh)?
 [ ] the human-facing rendered surface, coherently?
-Skip a hop only if it genuinely doesn't apply — and say so explicitly.
+Skip a hop only if it genuinely doesn't apply - and say so explicitly.
 ```
 
 A "substrate change" = a new term, schema field, tool, enum value, registry entry, page, type, or
-prompt vocabulary word — anything that propagates beyond the file you edited. **Audit at
+prompt vocabulary word - anything that propagates beyond the file you edited. **Audit at
 change-time, not as monthly cleanup.** The bug is always a hop you skipped.
 
 Two named directions of substrate change, both subject to the audit:
@@ -111,7 +111,7 @@ The pattern:
   always-loaded surface and its cap, loading-profile-aware (a doc read every session gets a
   tighter cap than one read on-demand).
 - `check:doc-sizes` fails when any surface is over cap; daily cron is the catch-all.
-- A firing tripwire triggers a **manual, interpretive pruning exercise** — the *trigger* is
+- A firing tripwire triggers a **manual, interpretive pruning exercise** - the *trigger* is
   automated, the *prune* stays operator-led (judgment about what to extract vs cut).
 - The prune move is almost always **"extract detail to an on-demand doc + leave a thin
   index/redirect stub,"** not "delete." Split by loading profile (principle 8).
@@ -130,7 +130,7 @@ If your domain has controlled lists (statuses, categories, taxonomies), the patt
 - **Never edit the registry mid-write to unblock a bad write.** Instead, have an *override path*
   that accepts the value provisionally and *queues it for promotion* through review. Editing the
   canonical list to dodge a validation error is how junk becomes canonical.
-- A new canonical entry **silently attracts** future unaliased writes that share its prefix/shape —
+- A new canonical entry **silently attracts** future unaliased writes that share its prefix/shape -
   add defensive aliases when you add one.
 
 ---
@@ -155,7 +155,7 @@ If your domain has controlled lists (statuses, categories, taxonomies), the patt
   before assuming it's live.
 - **Worktree / branch hygiene.** Verify the branch is current with main before starting (many PRs
   may have landed). Never reset a branch without checking the reflog for recoverable work. Removing
-  a worktree keeps the branch ref — only *uncommitted* work is at risk.
+  a worktree keeps the branch ref - only *uncommitted* work is at risk.
 - **Single write path, enforced.** Re-stating principle 3 as a gotcha: the moment you allow a
   second input path "just this once," you've lost the ability to enforce invariants. Add the
   override-and-queue path instead.
@@ -171,11 +171,11 @@ The behavioral rule that removed the most friction, stated precisely:
   when the decision was already made just wastes a round-trip.
 - **Unscoped / ambiguous / interpretive work** → ask first. Here the human's input is the signal.
 - **Destructive or irreversible decisions** → escalate regardless of mode.
-- **Grilling sessions are always ask-don't-ship** — never let an execution-shaped habit (or an
+- **Grilling sessions are always ask-don't-ship** - never let an execution-shaped habit (or an
   execution-shaped kickoff brief) push an unmade decision into shipped code. Tag the mode in the
   brief so the next session knows which contract it's under.
 
-The recovery mechanism when a grilling session *does* over-ship: a "ratification queue" — list the
+The recovery mechanism when a grilling session *does* over-ship: a "ratification queue" - list the
 calls that got made without sign-off and re-confirm them at the next interpretive session. Cheaper
 than preventing every instance perfectly.
 

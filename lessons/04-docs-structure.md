@@ -7,7 +7,7 @@ The docs tree is the agent's external memory. The rules that make it work:
 
 1. **Every doc is reachable from the Documentation Index in CLAUDE.md.** A doc the agent can't
    find via the index effectively doesn't exist. When you add a doc, add its index line in the
-   same change. (Worth a `check:*` script once you have many — see lesson 06.)
+   same change. (Worth a `check:*` script once you have many - see lesson 06.)
 2. **Each doc states "read when…"** so the agent knows whether to pull it for the current task.
 3. **Tier docs by loading profile.** Always-loaded (root) vs on-demand (docs/). Keep the
    always-loaded set small and push detail down.
@@ -42,7 +42,7 @@ The docs tree is the agent's external memory. The rules that make it work:
   prompts/                      # operational prompts, if you drive flows from prose
 ```
 
-Adapt freely — the point is the *separation by loading profile and churn rate*, not the exact
+Adapt freely - the point is the *separation by loading profile and churn rate*, not the exact
 paths.
 
 ---
@@ -70,18 +70,18 @@ trade-off**. Most are 1-3 sentences. Don't ADR the obvious; do ADR the thing a f
 ```
 
 Create the directory lazily on the first ADR. Number them sequentially. When a decision is
-reversed, mark the old ADR superseded rather than deleting it — the history is the value.
+reversed, mark the old ADR superseded rather than deleting it - the history is the value.
 
-## features/ — the work log + roadmap tick-off
+## features/ - the work log + roadmap tick-off
 
 Every product feature sprint gets a doc here. Two phases:
-- **Before:** a scoping/brainstorm doc — problem, goal, scope in/out, approach, open questions.
+- **Before:** a scoping/brainstorm doc - problem, goal, scope in/out, approach, open questions.
   (This is also where a plan-mode plan lands.)
-- **After:** a recap appended to the same doc — what shipped, what changed vs the plan, what
+- **After:** a recap appended to the same doc - what shipped, what changed vs the plan, what
   surprised us, the retro. **And the close-out checklist:** tick the roadmap (remove from Active),
   add the shipped.md line, update any docs the change invalidated.
 
-This folder is the archive layer — it's not loaded every session, it's the place you go to
+This folder is the archive layer - it's not loaded every session, it's the place you go to
 reconstruct "why did we do it that way" months later.
 
 ## GLOSSARY (shared language)
@@ -92,7 +92,7 @@ and the agent stop talking past each other, and how the agent stays consistent a
 Rules:
 - **Define each term once, canonically.** Everything else refers to it.
 - **Strict format:** term definition + cardinality/relationship to other terms. NO implementation
-  detail — that rots. Just "what this word means and how it relates to the others."
+  detail - that rots. Just "what this word means and how it relates to the others."
 - **Grow it incrementally** via grilling sessions (lesson 05), not in one big authoring push. Terms
   earn their place when ambiguity actually surfaces.
 - If it gets big, **split by zone/subdomain** so a session loads only the vocabulary it needs, with
@@ -100,18 +100,18 @@ Rules:
 
 ## Memory (if the harness supports persistent agent memory)
 
-Separate from docs/ — this is the agent's own cross-session memory, not product documentation.
+Separate from docs/ - this is the agent's own cross-session memory, not product documentation.
 The pattern that worked:
 - **One fact per file**, with frontmatter (name, one-line description for recall, a type:
   user-preference / standing-feedback / project-state / reference-pointer).
 - **An index file loaded every session** with one line per memory (title + hook). Never put memory
-  *content* in the index — just pointers.
+  *content* in the index - just pointers.
 - **Update, don't duplicate.** Before saving, check for an existing file covering it. Delete
   memories that turn out wrong.
 - **Save the non-obvious:** standing corrections / preferences, project state not derivable from
   code or git, pointers to external resources. **Don't save** what the repo already records (code
-  structure, past fixes, git history) — that's just stale duplication waiting to mislead.
+  structure, past fixes, git history) - that's just stale duplication waiting to mislead.
 - Link related memories to each other so recall pulls the cluster.
 
-The discipline: memory captures *what was non-obvious*, and is treated as possibly-stale — if a
+The discipline: memory captures *what was non-obvious*, and is treated as possibly-stale - if a
 memory names a file or flag, verify it still exists before acting on it.

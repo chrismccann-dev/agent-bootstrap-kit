@@ -2,7 +2,7 @@
 name: cross-system-audit
 description: >
   Before declaring a substrate change done, trace it through every actor (reader/writer) it touches
-  — schema, types, integration layer, agent instructions, prompts, external clients, the UI — so it
+  - schema, types, integration layer, agent instructions, prompts, external clients, the UI - so it
   doesn't get updated in one place and not the others. Use whenever a change introduces or alters a
   shared term, schema field, tool, enum value, registry entry, page, type, or prompt vocabulary.
   Trigger phrases: "audit this change", "did I update everywhere", "cross-system check before PR".
@@ -11,7 +11,7 @@ description: >
 # cross-system-audit
 
 The single most repeated bug pattern in an agent-driven system: **a change to shared substrate
-updated in one place and not the others.** This skill is the discipline that catches it — run it
+updated in one place and not the others.** This skill is the discipline that catches it - run it
 *at change-time*, before the PR, not as monthly cleanup.
 
 ## What counts as a "substrate change"
@@ -20,7 +20,7 @@ Anything that propagates beyond the file you edited: a new/changed **term**, **s
 **tool/endpoint**, **enum value**, **registry entry**, **page**, **type**, or **prompt vocabulary
 word**. If it's purely local to one file, skip this skill.
 
-## Step 1 — Identify your actors
+## Step 1 - Identify your actors
 
 List the readers/writers of shared substrate in *this* repo. A typical agent-driven product has
 something like:
@@ -36,28 +36,28 @@ something like:
 
 Adapt the list to your system. The point is to enumerate *every consumer* of the thing you changed.
 
-## Step 2 — Walk the trace
+## Step 2 - Walk the trace
 
-For the change, check each hop. Skip a hop only if it genuinely doesn't apply — and **say so
+For the change, check each hop. Skip a hop only if it genuinely doesn't apply - and **say so
 explicitly** (an unexamined skip is how the bug hides):
 
 ```
 [ ] Schema / types / migration?   ...and is the migration actually APPLIED to the live DB?
-[ ] Integration layer — tool input schema + tool description + matching resource description?
-[ ] Agent instructions — CLAUDE.md / the right doc / the glossary / memory reflect the new vocab?
-[ ] Operational prompts — flows that use this field/vocabulary use it correctly?
-[ ] External client — will it see the new tool/resource on its next catalog refresh? (caches!)
-[ ] Human-facing rendered surface — does it read coherently to the human?
+[ ] Integration layer - tool input schema + tool description + matching resource description?
+[ ] Agent instructions - CLAUDE.md / the right doc / the glossary / memory reflect the new vocab?
+[ ] Operational prompts - flows that use this field/vocabulary use it correctly?
+[ ] External client - will it see the new tool/resource on its next catalog refresh? (caches!)
+[ ] Human-facing rendered surface - does it read coherently to the human?
 ```
 
-## Step 3 — Report
+## Step 3 - Report
 
 State, per hop: updated / N-A-because-X / **still-needs-doing**. Anything in the third bucket is a
 blocker on the PR. The bug is always a hop you skipped.
 
 ## Companion checks (the deterministic ones)
 
-This skill is the human-judgment layer. Back it with scripts where the answer is binary — these
+This skill is the human-judgment layer. Back it with scripts where the answer is binary - these
 should fail CI, not rely on this skill being run:
 - doc links resolve; every doc is in the index
 - schema columns are all typed in code

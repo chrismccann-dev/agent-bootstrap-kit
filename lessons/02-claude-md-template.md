@@ -1,11 +1,11 @@
 # CLAUDE.md Template (the agent system prompt)
 
-*Read this if you're writing the root agent index — `CLAUDE.md`, `AGENTS.md`, or whatever your
+*Read this if you're writing the root agent index - `CLAUDE.md`, `AGENTS.md`, or whatever your
 runtime loads every session.*
 
-`CLAUDE.md` is loaded into **every** session. It is the most expensive real estate you own —
+`CLAUDE.md` is loaded into **every** session. It is the most expensive real estate you own -
 every token here is paid on every turn. Rule of thumb: **CLAUDE.md should tell the agent who it
-is, where everything is, and how to behave — and push all detail into on-demand docs it can
+is, where everything is, and how to behave - and push all detail into on-demand docs it can
 pull.** Aim to keep it lean (the project it came from holds this under ~40KB by aggressively
 extracting reference material).
 
@@ -16,7 +16,7 @@ Copy the skeleton below; fill the `[brackets]`; delete sections you don't need y
 ```markdown
 # [Project Name]
 
-[2-4 sentences: what this repo is, who it's for, the single big goal. State the North Star —
+[2-4 sentences: what this repo is, who it's for, the single big goal. State the North Star -
 the thing every decision should serve. If single-user / single-tenant, say so; it changes a lot
 of architecture decisions. If there's one canonical input path or one core workflow, name it
 here in the first paragraph.]
@@ -26,14 +26,14 @@ here in the first paragraph.]
 [This is the map. The agent reads this to know where to look. Keep each line to: link + one-line
 "what's in it + when to read it." Group by tier.]
 
-Foundational living docs (root level — read first):
-- **[PRODUCT.md](PRODUCT.md)** — product purpose, workflows, data model, roadmap pointer.
-- **[GLOSSARY.md](GLOSSARY.md)** — shared vocabulary. Every domain term defined once, here.
-- **[docs/adr/](docs/adr/)** — one file per non-obvious, hard-to-reverse decision.
+Foundational living docs (root level - read first):
+- **[PRODUCT.md](PRODUCT.md)** - product purpose, workflows, data model, roadmap pointer.
+- **[GLOSSARY.md](GLOSSARY.md)** - shared vocabulary. Every domain term defined once, here.
+- **[docs/adr/](docs/adr/)** - one file per non-obvious, hard-to-reverse decision.
 
 On-demand reference (pull when touching the relevant surface):
-- **[docs/architecture/...]** — [per-surface detail; only read when working on that surface]
-- **[docs/product/roadmap.md](docs/product/roadmap.md)** — current + next work. Check for "what's next."
+- **[docs/architecture/...]** - [per-surface detail; only read when working on that surface]
+- **[docs/product/roadmap.md](docs/product/roadmap.md)** - current + next work. Check for "what's next."
 
 [Principle: anything the agent needs *sometimes* lives behind a link with a "read when…" note,
 not inline. CLAUDE.md is the index, not the encyclopedia.]
@@ -41,15 +41,15 @@ not inline. CLAUDE.md is the index, not the encyclopedia.]
 ## Shared Language
 
 [Point at the glossary and the grilling skill. The single most leveraged investment in an
-agent-driven repo is a precise, shared vocabulary — it's how you and the agent avoid talking
+agent-driven repo is a precise, shared vocabulary - it's how you and the agent avoid talking
 past each other. Terms are defined ONCE, canonically, and everything else refers to them.]
 - Glossary lives in [GLOSSARY.md]. Grown incrementally via `/grill-with-docs` sessions, not
-  bulk-authored. Strict format: term definitions + cardinality relationships only — no
+  bulk-authored. Strict format: term definitions + cardinality relationships only - no
   implementation detail.
 
 ## Git Discipline
 
-[State the autonomy contract explicitly — this removes a whole class of round-trips. Tune to taste.]
+[State the autonomy contract explicitly - this removes a whole class of round-trips. Tune to taste.]
 - **Approved or planned work** (plan approved, explicit "go for it"): commit + push + open PR +
   merge autonomously as one flow when ready. No second sign-off round. End the message with the
   merged-PR URL + main-branch SHA.
@@ -71,14 +71,14 @@ and link it.]
 
 ## Data Model
 
-[The roster — entity names + one line each + the key relationships. Push per-column histories and
+[The roster - entity names + one line each + the key relationships. Push per-column histories and
 migration provenance to docs/architecture/data-model.md.]
 
 ### Core entities (roster)
-- **[entity]** — [one line]. [key columns / jsonb / arrays worth knowing every session]
+- **[entity]** - [one line]. [key columns / jsonb / arrays worth knowing every session]
 
 ### Relationship patterns (IMPORTANT)
-- [State the invariants that bite if violated — e.g. "joins are by FK, never text matching";
+- [State the invariants that bite if violated - e.g. "joins are by FK, never text matching";
   "new rows MUST set X and Y on insert". These are the rules that cause silent corruption.]
 
 ### Canonical registries / source-of-truth lists
@@ -88,7 +88,7 @@ migration provenance to docs/architecture/data-model.md.]
 
 ## Running Locally
 
-[BE SPECIFIC about env vars — this is the #1 thing future-you and the agent waste time on.]
+[BE SPECIFIC about env vars - this is the #1 thing future-you and the agent waste time on.]
 
 ```bash
 [install]
@@ -96,7 +96,7 @@ migration provenance to docs/architecture/data-model.md.]
 ```
 
 Requires `.env.local` with:
-- `[VAR_NAME]` — [what it's for, where to get it]
+- `[VAR_NAME]` - [what it's for, where to get it]
 - [...]
 
 [Document any non-obvious env gotchas: which keys must be passed explicitly to which SDK, which
@@ -106,7 +106,7 @@ save hours.]
 ## Dev notes
 
 [The pile of hard-won "this will bite you" facts. Examples of the genre:]
-- [Build/type gotchas — flags that must stay on, what breaks if off.]
+- [Build/type gotchas - flags that must stay on, what breaks if off.]
 - [What does NOT work locally vs in CI/deploy, and the workaround.]
 - [Always run `[build/typecheck]` before pushing if you touched `[X]`.]
 
@@ -114,7 +114,7 @@ save hours.]
 [If the product has a UI. Keep enforcement points here; push the full token map to a design doc.]
 - Tokens live in `[...]`. No arbitrary one-off values for chrome.
 - Use primitives, don't reimplement. [List the shared components that already exist.]
-- [One canonical rule per recurring decision — e.g. one confidence-threshold helper, one color
+- [One canonical rule per recurring decision - e.g. one confidence-threshold helper, one color
   helper per signal. "One helper per system" beats copy-pasted constants.]
 
 ## Sprint Cadence (for the agent)
@@ -131,7 +131,7 @@ checkpoints on every non-trivial unit of work:
    with real input.] "It should work" is not verification.
 4. **Cross-system audit before PR.** If this changed shared substrate (a term, a schema field, a
    tool, a registry entry, a vocabulary word), trace it through every consumer before declaring
-   done. (See lesson 06 — Enforcement, Audit & the Gotchas — for the actor-trace template.)
+   done. (See lesson 06 - Enforcement, Audit & the Gotchas - for the actor-trace template.)
 5. **Simplify before commit.** One pass for duplication / over-engineering after implementation
    is done. Agents over-engineer; catch it before it's tech debt.
 6. **Retro before docs.** List what didn't work / what surprised us / what we'd do differently.
@@ -140,7 +140,7 @@ checkpoints on every non-trivial unit of work:
    surface, files likely to touch, verification plan, open questions.
 
 [Tag whether a given brief is for an EXECUTING session (autonomy applies) or a GRILLING /
-interpretive session (ask, don't ship). Don't let the two blur — see principle 7.]
+interpretive session (ask, don't ship). Don't let the two blur - see principle 7.]
 
 ## Memory (if your harness has persistent memory)
 

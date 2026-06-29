@@ -4,7 +4,7 @@ Current + next + future work only. Shipped work moves OUT of here and into
 [../sprints/shipped.md](../sprints/shipped.md) in the same change that ships it.
 
 ## Active (in flight now)
-- [item — one line, link to the feature/sprint doc]
+- [item - one line, link to the feature/sprint doc]
 
 ## On deck (next up)
 - [...]

@@ -1,4 +1,4 @@
-# [Project Name] — Product
+# [Project Name] - Product
 
 <!-- Delete any section that doesn't apply. A short, accurate doc beats a complete-looking one full
 of guesses. Sections marked (optional) are safe to remove for many projects. Fuller guidance: lessons/03. -->
@@ -6,18 +6,18 @@ of guesses. Sections marked (optional) are safe to remove for many projects. Ful
 ## Purpose
 
 [The North Star. What does this product exist to do, for whom, and what does "winning" look like?
-Same North Star as CLAUDE.md's opening, expanded. If there's a deeper thesis — why this approach,
-why now, what the end-state is — put it here. Everything downstream should trace back to this.]
+Same North Star as CLAUDE.md's opening, expanded. If there's a deeper thesis - why this approach,
+why now, what the end-state is - put it here. Everything downstream should trace back to this.]
 
 ## Core Workflows
 
 [The 1-3 workflows that ARE the product. For each: the trigger, the steps, where data enters, where
 it lands, who/what does each step. The most useful section for orienting a new session.]
 
-- **[Workflow A]** — [trigger → steps → output. Note the canonical input path.]
-- **[Workflow B]** — [...]
+- **[Workflow A]** - [trigger → steps → output. Note the canonical input path.]
+- **[Workflow B]** - [...]
 
-[If different workflows have different *shapes* — one iterative/streaming, another batch/archival —
+[If different workflows have different *shapes* - one iterative/streaming, another batch/archival -
 call that out. The shape drives the architecture.]
 
 ## Product Boundaries
@@ -27,7 +27,7 @@ non-goals prevents scope creep.]
 
 ## Data Model
 
-[The conceptual model — entities and how they relate — at a higher altitude than CLAUDE.md's roster.
+[The conceptual model - entities and how they relate - at a higher altitude than CLAUDE.md's roster.
 Link docs/architecture/data-model.md for column-level detail.]
 
 ## Canonical Registries / Controlled Vocabularies (optional)
@@ -35,23 +35,23 @@ Link docs/architecture/data-model.md for column-level detail.]
 [If applicable: the controlled axes, where each source-of-truth lives, the rule that authored list
 is canonical and code mirrors it.]
 
-## AI / Synthesis (optional — only if your product uses LLMs internally)
+## AI / Synthesis (optional - only if your product uses LLMs internally)
 
 [How the product itself calls models: which model, pipeline shape, where prompts live, how outputs
 are cached/invalidated, what vocabulary must survive any rewrite passes.]
 
 ## Current App State (optional; date-stamped)
 
-[Short "where are we" — shipped + live, stubbed, deprecated. Keep terse + date-stamped, or push to
+[Short "where are we" - shipped + live, stubbed, deprecated. Keep terse + date-stamped, or push to
 the roadmap/shipped log entirely.]
 
-## Design System (optional — UI products)
+## Design System (optional - UI products)
 
 [One paragraph + a pointer to the full design doc. Don't duplicate the token map here.]
 
 ## Architecture
 
-[Conceptual architecture — boxes and arrows. Link CLAUDE.md / docs for the concrete stack.]
+[Conceptual architecture - boxes and arrows. Link CLAUDE.md / docs for the concrete stack.]
 
 ## Roadmap
 

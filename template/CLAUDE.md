@@ -1,21 +1,21 @@
 # [Project Name]
 
 <!-- Delete any section that doesn't apply. The goal is a short, accurate root context, not a
-complete-looking file — always-loaded context is expensive. Fuller guidance: lessons/02. -->
+complete-looking file - always-loaded context is expensive. Fuller guidance: lessons/02. -->
 
 [2-4 sentences: what this repo is, who it serves, and the North Star.]
 
 ## Documentation Index
 
-Foundational living docs (root level — read first):
-- **[PRODUCT.md](PRODUCT.md)** — product purpose, workflows, data model, roadmap pointer.
-- **[GLOSSARY.md](GLOSSARY.md)** — shared vocabulary. Every domain term defined once, here.
-- **[docs/adr/](docs/adr/)** — one file per non-obvious, hard-to-reverse decision.
+Foundational living docs (root level - read first):
+- **[PRODUCT.md](PRODUCT.md)** - product purpose, workflows, data model, roadmap pointer.
+- **[GLOSSARY.md](GLOSSARY.md)** - shared vocabulary. Every domain term defined once, here.
+- **[docs/adr/](docs/adr/)** - one file per non-obvious, hard-to-reverse decision.
 
 On-demand reference (pull when touching the relevant surface):
-- **[docs/architecture/data-model.md](docs/architecture/data-model.md)** — per-column / per-relationship detail.
-- **[docs/architecture/doc-tripwires.md](docs/architecture/doc-tripwires.md)** — size caps on always-loaded docs.
-- **[docs/product/roadmap.md](docs/product/roadmap.md)** — current + next work. **Check here for "what's next."**
+- **[docs/architecture/data-model.md](docs/architecture/data-model.md)** - per-column / per-relationship detail.
+- **[docs/architecture/doc-tripwires.md](docs/architecture/doc-tripwires.md)** - size caps on always-loaded docs.
+- **[docs/product/roadmap.md](docs/product/roadmap.md)** - current + next work. **Check here for "what's next."**
 
 [Rule: anything the agent needs *sometimes* lives behind a link with a "read when…" note, not
 inline. CLAUDE.md is the index, not the encyclopedia.]
@@ -23,7 +23,7 @@ inline. CLAUDE.md is the index, not the encyclopedia.]
 ## Shared Language
 
 - Glossary lives in [GLOSSARY.md](GLOSSARY.md). Grown incrementally via `/grill-with-docs` sessions,
-  not bulk-authored. Strict format: term definitions + cardinality relationships only — no
+  not bulk-authored. Strict format: term definitions + cardinality relationships only - no
   implementation detail.
 
 ## Git Discipline
@@ -56,10 +56,10 @@ section says.]
 ## Data Model
 
 ### Core entities (roster)
-- **[entity]** — [one line]. [key columns / jsonb / arrays worth knowing every session]
+- **[entity]** - [one line]. [key columns / jsonb / arrays worth knowing every session]
 
 ### Relationship patterns (IMPORTANT)
-- [State the invariants that bite if violated — e.g. "joins are by FK, never text matching"; "new
+- [State the invariants that bite if violated - e.g. "joins are by FK, never text matching"; "new
   rows MUST set X and Y on insert". These are the rules that cause silent corruption.]
 
 ### Canonical registries / source-of-truth lists
@@ -74,7 +74,7 @@ section says.]
 ```
 
 Requires `.env.local` (or equivalent) with:
-- `[VAR_NAME]` — [what it's for, where to get it]
+- `[VAR_NAME]` - [what it's for, where to get it]
 - [...]
 
 [Document non-obvious env gotchas: which keys must be passed explicitly to which SDK, which parts of
@@ -82,7 +82,7 @@ the build don't run in a worktree, fallbacks when a local key is missing. These 
 
 ## Dev notes
 
-- [Build/type gotchas — flags that must stay on, what breaks if off.]
+- [Build/type gotchas - flags that must stay on, what breaks if off.]
 - [What does NOT work locally vs in CI/deploy, and the workaround.]
 - [Always run `[build/typecheck]` before pushing if you touched `[X]`.]
 
@@ -90,7 +90,7 @@ the build don't run in a worktree, fallbacks when a local key is missing. These 
 [If the product has a UI. Keep enforcement points here; push the full token map to a design doc.]
 - Tokens live in `[...]`. No arbitrary one-off values for chrome.
 - Use primitives, don't reimplement. [List the shared components that already exist.]
-- One canonical rule per recurring decision — one helper per signal, not copy-pasted constants.
+- One canonical rule per recurring decision - one helper per signal, not copy-pasted constants.
 
 ## Sprint Cadence (for the agent)
 

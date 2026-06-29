@@ -12,7 +12,7 @@ coherent, loadable, and self-correcting as it compounds.
 > Setup/copy commands live in the [root README](../README.md). This index is just the reading map
 > for the *why*.
 
-## The lessons — read when
+## The lessons - read when
 
 | Lesson | Read when |
 |---|---|
@@ -25,24 +25,24 @@ coherent, loadable, and self-correcting as it compounds.
 | `07-existing-repo-adoption.md` | You're adding the kit to a repo that already has code, docs, and history. |
 
 - **New repo?** Read 01-05 first.
-- **Existing repo?** Read **01 and 07 first** — and do *not* copy the greenfield template blindly.
+- **Existing repo?** Read **01 and 07 first** - and do *not* copy the greenfield template blindly.
 
 ## Vocabulary used in this kit
 
 The recurring house terms, defined once:
 
-- **Root index** — the file your agent reads every session (`CLAUDE.md` / `AGENTS.md` / equivalent).
-- **Substrate** — the shared repo material agents and humans both rely on: docs, schema, prompts,
+- **Root index** - the file your agent reads every session (`CLAUDE.md` / `AGENTS.md` / equivalent).
+- **Substrate** - the shared repo material agents and humans both rely on: docs, schema, prompts,
   workflows, memory, checks.
-- **Grill** — an interview-style session that locks vocabulary or decisions *before* execution.
-- **Always-loaded context** — content the agent reads on every session (vs on-demand reference).
-- **Actor-trace** — checking every system that reads or writes a shared concept before shipping a
+- **Grill** - an interview-style session that locks vocabulary or decisions *before* execution.
+- **Always-loaded context** - content the agent reads on every session (vs on-demand reference).
+- **Actor-trace** - checking every system that reads or writes a shared concept before shipping a
   change to it.
 
 ## What's deliberately NOT here
 
 - Anything domain-specific (no business logic, no schema columns, no taxonomies).
-- Framework choices (Next/Supabase/etc.) — those are incidental, swap freely.
+- Framework choices (Next/Supabase/etc.) - those are incidental, swap freely.
 - A claim that you need all of this on day one. **Most of it earns its place only once the repo
   is big enough to drift.** Start with `CLAUDE.md` + plan→implement + grill-with-docs. Add the
   rest when you feel the specific pain it solves. Premature scaffolding is its own tech debt.
