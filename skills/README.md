@@ -17,8 +17,13 @@ each other but degrade gracefully if you only take some.
 | `plan-then-implement/` | The core build loop - decide what to build before building it. |
 | `coordinator-spawn/` | Delegate to briefed sub-agents; one session stays the coordinator. |
 | `self-improving-skill/` | Skills update their own `SKILL.md` after each run. |
+| `improve-skill/` | Rubric-audit one skill, emit a cut-ready report, then stop (never edits). |
 | `cross-system-audit/` | Trace a substrate change through every actor before the PR. |
 | `simplify-pass/` | Quality-only dedup / de-over-engineer pass before commit. |
+
+The two self-improvement skills are a pair: `self-improving-skill` is *passive* (small self-edits
+after every run); `improve-skill` is the *active* audit you invoke on purpose when a skill has
+drifted or bloated.
 
 ### Adopt in this order
 
@@ -26,7 +31,7 @@ each other but degrade gracefully if you only take some.
 |---|---|---|
 | **Start here** | `plan-then-implement`, `grill-with-docs` | day one |
 | **Add soon** | `simplify-pass`, `cross-system-audit` | once you're shipping real changes |
-| **Advanced** | `coordinator-spawn`, `self-improving-skill` | when work outgrows one context / skills need tending |
+| **Advanced** | `coordinator-spawn`, `self-improving-skill`, `improve-skill` | when work outgrows one context / skills need tending |
 
 ## Install
 
