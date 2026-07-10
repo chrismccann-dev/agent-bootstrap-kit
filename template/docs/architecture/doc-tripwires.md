@@ -22,5 +22,9 @@ thin index/redirect stub**, not delete. Split by loading profile.
 - **A single file's churn × size** high → run an architecture review on it.
 
 ## Enforcement
-- A `check:doc-sizes` script should fail CI when any surface is over cap, with a daily cron catch-all.
-  (`lessons/06-enforcement-and-audit.md` describes the pattern; the script itself is per-project.)
+- `scripts/check-docs.mjs` enforces this registry (plus required-docs-exist and links-resolve).
+  Keep its `SIZE_CAPS_KB` block in sync with the table above, wire it to CI on every PR, and add a
+  daily cron as the catch-all. (`lessons/06-enforcement-and-audit.md` describes the pattern.)
+- A firing size tripwire triggers a *manual* prune - extract to an on-demand doc + leave a stub,
+  don't just trim words. Size caps catch bloat, not rot: schedule a periodic pruning pass too
+  (`lessons/08-scale-lessons.md` §3).

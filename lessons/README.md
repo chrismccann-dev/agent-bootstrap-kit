@@ -23,9 +23,12 @@ coherent, loadable, and self-correcting as it compounds.
 | `05-skills-patterns.md` | You want the reusable workflows: planning, grilling, delegation, audits, handoffs. |
 | `06-enforcement-and-audit.md` | The repo is big enough to drift and prose reminders aren't enough. |
 | `07-existing-repo-adoption.md` | You're adding the kit to a repo that already has code, docs, and history. |
+| `08-scale-lessons.md` | The substrate has scaled past the starter patterns (100+ docs, 10+ skills, agents writing constantly). |
 
 - **New repo?** Read 01-05 first.
 - **Existing repo?** Read **01 and 07 first** - and do *not* copy the greenfield template blindly.
+- **Mature repo?** Read 08 when tripwires, grilling, and audits start needing second-generation
+  versions - not before.
 
 ## Vocabulary used in this kit
 

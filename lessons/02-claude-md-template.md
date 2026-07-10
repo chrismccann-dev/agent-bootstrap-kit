@@ -58,6 +58,17 @@ past each other. Terms are defined ONCE, canonically, and everything else refers
 - Never reset a branch without confirming via reflog that recoverable work is preserved.
 - [Commit message trailer / co-author convention, if any.]
 
+## Hard Stops
+
+[The explicit destructive-action denylist - things the agent must never do without a fresh,
+explicit human instruction in the current session, regardless of mode or autonomy policy. An
+autonomy policy says how much rope; this section says where the cliff is. Learned from a real
+adoption (a repo with irreplaceable source originals): naming the never-list removed a whole
+class of "surely it wouldn't" risk. Keep it short and concrete.]
+- Never delete or overwrite [source-of-truth data / originals / prod database].
+- Never [force-push / rewrite history] on [main].
+- Never run [destructive external operation - bulk emails, payments, deletes on a remote service].
+
 ## Architecture
 
 [The every-session shape, not the full detail. Framework, where the boundaries are, what's

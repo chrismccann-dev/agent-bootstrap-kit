@@ -172,6 +172,18 @@ in its implement phase. They're the same primitive at different altitudes.
   recurs and you want to act on patterns, not anecdotes.
 - **consolidate-memory** - a periodic reflective pass over memory files: merge duplicates, fix
   stale facts, prune the index. Run on a cadence, not just when something feels off.
+- **completion-gate** - when a repo has multi-write lifecycles (close a sprint, resolve an
+  investigation), a skill that *owns the "done" check*: a verifiable checklist (flags set,
+  cross-links resolve, the ledger entry exists) run before anything is declared closed. Derive
+  lifecycle state from the substrate instead of storing it, so "done" can't drift.
+
+**Once domain skills multiply (5+), split them into planners and executors.** A skill either
+constructs work or writes to the substrate, never both: planning skills have *no write tools* and
+emit proposals; executing skills each own a small named set of write tools (1-5) plus the
+validation discipline for them, with the ownership stated in the tool description itself. This is
+principle 7's grilling/executing boundary pushed down into tool access, where it's enforceable
+instead of behavioral. Full pattern - plus catalog-based dispatch and staged autonomy - in
+lesson 08 §§5-7.
 
 The pattern across all of these: **read-only auditors that stop at a report** are safer and more
 reusable than skills that edit. Separate "find the problem" from "fix the problem" - it lets you

@@ -119,6 +119,14 @@ The pattern:
 Other tripwires worth registering: tool count crossing a threshold (→ consolidate tools), memory
 index size (→ run consolidate-memory), a single file's churn × size (→ architecture-review it).
 
+Two scale refinements (details in lesson 08 §3):
+- **Tier the caps by loading profile** rather than one uniform number - a doc read every session
+  gets a tight cap; a deep-reference doc read on demand can be several times larger.
+- **Size caps only catch bloat; they miss rot.** A doc can stay under cap while filling with
+  stale, superseded, or over-detailed sections that bury the load-bearing content. Pruning -
+  extract / split / consolidate / archive / re-scope / delete - is a first-class periodic
+  operation, not just the response to a firing tripwire.
+
 ---
 
 ## 4. Canonical registries (controlled vocabularies)
@@ -178,6 +186,12 @@ The behavioral rule that removed the most friction, stated precisely:
 The recovery mechanism when a grilling session *does* over-ship: a "ratification queue" - list the
 calls that got made without sign-off and re-confirm them at the next interpretive session. Cheaper
 than preventing every instance perfectly.
+
+Once agents write to the substrate routinely, the contract graduates from two modes to a
+**per-skill autonomy ladder with numeric thresholds** - every write reviewed → routine writes
+auto-apply → auto-apply with sampling - where promotion is earned (N consecutive
+approved-without-edits runs), demotion is mechanical (override rate over a threshold drops a
+stage), and both are measured from a structured log of human overrides. See lesson 08 §§6-7.
 
 ---
 

@@ -43,6 +43,15 @@ section says.]
 - Never reset a branch without confirming via reflog that recoverable work is preserved.
 - [Commit-message trailer / co-author convention, if any.]
 
+## Hard Stops
+
+[The explicit destructive-action denylist - things the agent must never do without a fresh,
+explicit human instruction in the current session, regardless of mode or autonomy policy. Keep it
+short and concrete; this section outranks everything else in this file.]
+- Never delete or overwrite [source-of-truth data / originals / the archive / prod database].
+- Never [force-push / rewrite history] on [main].
+- Never run [destructive external operation - bulk emails, payments, deletes on a remote service].
+
 ## Architecture
 
 - **Framework:** [...]

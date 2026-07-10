@@ -108,6 +108,51 @@ software around every documented process. When in doubt, the workflow stays a do
 app-ification is its own deliberate decision, routed through planning, not a side effect of writing
 a glossary.
 
+## What the adoption looked like ten days in (field report)
+
+Revisiting the same photography repo ~10 days and ~140 commits after adoption, the pattern was
+consistent: **the conventions landed hard; the file layout didn't - and that's fine.**
+
+What held up:
+- The thin root index was the most-obeyed artifact: operating modes adopted verbatim, doc index
+  with "read the smallest set that matches the task," autonomy policy stated explicitly.
+- The glossary grew exactly as prescribed - incrementally, via grilling, in strict
+  term+cardinality format - including periodic **ratification commits** that sweep provisional
+  terms into confirmed status. Low commit count on a glossary is adoption, not staleness.
+- Doc currency beat code currency: more commits touched markdown than code, and doc updates rode
+  in the same commits as the system changes they described.
+- The first real enforcement built was the `check:docs` script (required docs exist + internal
+  links resolve) - validating "first check by pain" above. The kit now ships a starter version
+  (`template/scripts/check-docs.mjs`).
+
+What diverged - legitimately:
+- Roadmap, shipped ledger, issues, and decisions all consolidated into sections of one
+  `PRODUCT.md` instead of separate `docs/product/` + `docs/sprints/` files - with its own
+  "split triggers" note for when the file outgrows scanning. For a small repo, **consolidated
+  sections with a split trigger are a valid end-state**; the separation the kit prescribes is by
+  churn rate, and sections satisfy it until size says otherwise.
+- Six of seven skills were (correctly) not adopted; the one that was - grill-with-docs - was
+  *forked and rewritten* for the domain and runtime, not copied. Expect that: a skill file is a
+  starting shape, and a repo-local fork that names its own docs is the healthy outcome.
+
+What quietly failed:
+- **The ADR folder stalled at one entry** while hard-to-reverse decisions kept being made - they
+  flowed to a "Decisions Made" section in the product doc instead, because that's where the
+  writing hand already was. The lesson: record decisions where they're already being written and
+  split an `adr/` folder out later, or don't create the folder until the second real ADR.
+  An empty convention loses to the path of least resistance every time.
+- **A declined piece never got re-examined.** Doc-tripwires were (rightly) skipped at adoption -
+  "always-loaded docs are still small" - but the consolidated product doc then grew past 80KB
+  with nothing watching. When you decline a kit piece, write down the *re-open trigger* ("add
+  tripwires when any always-loaded doc passes N KB"), not just the decision. A deferral without
+  a trigger is a decision you'll never revisit. (See lesson 08 §9.)
+
+Conventions the adoption invented that are worth stealing (some now folded into the templates):
+a **Hard Stops** section in the root index (the explicit destructive-action denylist), the
+**grilling queue** (park undefined terms without interrupting executing work), and a standing
+**continuation prompt** section at the bottom of the product doc (the next-session kickoff brief
+as a maintained artifact rather than a per-session paste).
+
 ## How this maps to the greenfield lessons
 
 | Greenfield (lessons 02-06) | Existing-repo equivalent |

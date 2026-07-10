@@ -77,7 +77,9 @@ The goal is not more scaffolding. It's making future agents harder to confuse. F
 - `GLOSSARY.md` - shared vocabulary
 - `docs/adr/` - architecture decision records
 - `docs/product/roadmap.md` + `docs/sprints/shipped.md` - roadmap + ship ledger
-- six skills (catalog in [`skills/README.md`](skills/README.md))
+- `scripts/check-docs.mjs` - the first enforcement script (required docs exist, links resolve,
+  size caps hold)
+- seven skills (catalog in [`skills/README.md`](skills/README.md))
 
 ## The signature workflow: grill-with-docs
 
@@ -124,7 +126,10 @@ skills defer to whatever your repo's policy is.
 10. **Delegate with explicit handoffs**; one session stays the coordinator.
 
 Full reasoning for each in [`lessons/01-principles.md`](lessons/01-principles.md); the whole lesson
-set is indexed in [`lessons/README.md`](lessons/README.md).
+set is indexed in [`lessons/README.md`](lessons/README.md). When the substrate scales past the
+starter patterns (100+ docs, 10+ skills), there's a second-generation set in
+[`lessons/08-scale-lessons.md`](lessons/08-scale-lessons.md): the formalization tax, evidence-gated
+docs, pruning, planner/executor skill splits, staged autonomy, and the arbiter shape.
 
 ## License
 

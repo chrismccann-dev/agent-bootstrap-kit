@@ -12,7 +12,10 @@ The docs tree is the agent's external memory. The rules that make it work:
 3. **Tier docs by loading profile.** Always-loaded (root) vs on-demand (docs/). Keep the
    always-loaded set small and push detail down.
 4. **Moved content leaves a redirect stub** at the old path, so old links and old habits don't
-   break. ("This moved to X.")
+   break. ("This moved to X.") At scale, stubs grow a pointer table and a second flavor for
+   closed-out work items - see lesson 08 §4.
+5. **Titles are metadata.** Status, evidence counts, and close dates belong in doc titles and
+   one-line descriptions - agents route on directory listings long before they open files.
 
 ---
 
@@ -96,7 +99,11 @@ Rules:
 - **Grow it incrementally** via grilling sessions (lesson 05), not in one big authoring push. Terms
   earn their place when ambiguity actually surfaces.
 - If it gets big, **split by zone/subdomain** so a session loads only the vocabulary it needs, with
-  a thin index doc tying them together.
+  a thin index doc tying them together. (The proven cut line is *workflow zone* - which sessions
+  need which words - not alphabetical or topical grouping.)
+- Pair it with two side files once grilling is a habit: a **queue** of terms waiting for the next
+  grilling session, and a **ledger** of every ambiguity ever resolved (strikethrough + date +
+  pointer to the closing artifact, never deletion). They are different things - see lesson 08 §9.
 
 ## Memory (if the harness supports persistent agent memory)
 
