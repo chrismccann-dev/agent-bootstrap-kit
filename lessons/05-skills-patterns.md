@@ -173,9 +173,11 @@ in its implement phase. They're the same primitive at different altitudes.
 - **consolidate-memory** - a periodic reflective pass over memory files: merge duplicates, fix
   stale facts, prune the index. Run on a cadence, not just when something feels off.
 - **completion-gate** - when a repo has multi-write lifecycles (close a sprint, resolve an
-  investigation), a skill that *owns the "done" check*: a verifiable checklist (flags set,
+  investigation), something that *owns the "done" check*: a verifiable checklist (flags set,
   cross-links resolve, the ledger entry exists) run before anything is declared closed. Derive
-  lifecycle state from the substrate instead of storing it, so "done" can't drift.
+  lifecycle state from the substrate instead of storing it, so "done" can't drift. Start as a
+  checklist inside the owning workflow; promote to a dedicated skill only when closeout recurs
+  across workflows (lesson 08 §5).
 
 **Once domain skills multiply (5+), split them into planners and executors.** A skill either
 constructs work or writes to the substrate, never both: planning skills have *no write tools* and

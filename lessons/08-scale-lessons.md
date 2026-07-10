@@ -9,6 +9,16 @@ None of it is day-one material.*
 The earlier lessons tell you how to set the substrate up. This one is about what breaks - and
 what works - once agents are writing to it constantly.
 
+**Scale is a vector, not a threshold.** A repo can be mature on one axis and small on the others;
+import only the sections for the boundary you actually crossed, not the whole institutional layer:
+
+| Scale signal | Reach for |
+|---|---|
+| Many docs, few skills | pruning (§3), stubs + lifecycle labels (§4), re-open triggers (§9), point-of-use writing (§10) |
+| Many skills, modest docs | planner/executor split (§5), catalog dispatch (§6), staged autonomy (§7) |
+| Many aggregate / evidence docs | N-gating + re-synthesis (§§1-2) |
+| Many long-running work items | completion gates (§5), lifecycle stubs (§4), queue/ledger (§9) |
+
 ---
 
 ## 1. The formalization tax, and the N=3 graduation rule
@@ -27,6 +37,10 @@ The operating rule that made this concrete:
   it.*
 - **Graduated rules stay provisional.** Keep collecting observations 4-8; edit or delete the rule
   if later evidence diverges. Graduation is not tenure.
+- **N=3 governs convenience abstractions, not safety invariants.** A credible irreversible-risk
+  boundary (a Hard Stop, a destructive-action denylist entry) is formalized at N=1 - from one
+  near miss or one severity discovery, not three incidents. Require evidence of severity, not
+  repeated damage.
 
 Two corollaries that pair with it:
 
@@ -77,9 +91,17 @@ The six pruning moves, in order of increasing severity (name the move when you p
 5. **Re-home / re-scope** - tighten the doc's job definition; route out-of-scope content away.
 6. **Delete** - true removal. Irreversible, so it goes through review; everything else is cheap.
 
-And when you restructure, keep an **append-only decomposition log**: date, trigger, before/after
-shape, rationale, size delta. Historical entries are never edited. Six months in, the log is how
-a fresh session understands why the docs are shaped the way they are.
+And when you restructure, keep an **append-only decomposition log** - but bound it, or the log
+becomes substrate tax itself. Log the *structural* moves: anything that changes routing,
+ownership, canonical paths, or loading profiles. Ordinary consolidation and small prunes don't
+earn an entry. One line each:
+
+```
+Date | Trigger | Old routing | New routing | Why | Before/after size
+```
+
+Historical entries are never edited. Six months in, the log is how a fresh session understands
+why the docs are shaped the way they are.
 
 ## 4. Redirect stubs, second generation
 
@@ -96,9 +118,12 @@ Lesson 04 says "moved content leaves a redirect stub." At scale, two refinements
   state in the title itself ("CLOSED 2026-06-14 - see X") so a directory listing doubles as a
   status dashboard.
 
-The general form of both: **titles are metadata.** Status, evidence counts, close dates, and
-scope labels belong in titles and one-line descriptions, because agents route on listings long
-before they open files.
+The general form of both: **titles are metadata** - agents route on listings long before they
+open files. One qualification, learned from a repo where filenames *are* the link targets: put
+**stable routing facts** (status, scope, close dates) in titles, but keep **high-churn values**
+(an N that increments with every new record) in a header field or a generated index when title
+churn would mean link maintenance. Where doc IDs are stable and titles are display-only, counts
+in titles are free; where they aren't, a churning title breaks the stubs you just built.
 
 ## 5. Split skills into planners and executors (and gate the writes)
 
@@ -117,13 +142,25 @@ the mode boundary becomes a *tool-access* boundary, which makes it enforceable i
 behavioral. Errors become attributable ("which executor wrote this?") and write review becomes
 tractable (each executor is a small audit surface).
 
+**Enforce it at whatever level your runtime supports** - don't present prose as access control:
+
+1. *Capability boundary* - the runtime supports per-skill tool grants: planners literally have
+   no write tools. The real thing.
+2. *Approval boundary* - the runtime gates writes but not per-skill tools: planner-mode writes
+   route through the review queue.
+3. *Behavioral boundary + post-check* - neither is available: the mode lives in the brief, and a
+   deterministic after-the-fact check (did a planning session touch the substrate?) catches
+   violations. Weakest, but honest about being weakest.
+
 Two skills that earn their place in this scheme:
 
-- **A completion-gate skill.** Multi-write lifecycles (close a sprint, resolve an investigation,
-  ship a feature) end in inconsistent state unless something *owns* the "done" check. Make
-  closing a first-class skill with a verifiable checklist (flags set, cross-links resolve, the
-  ledger entry exists), and derive lifecycle state from the substrate rather than storing it -
-  "resolved" should be *computable*, so it can't drift.
+- **A completion gate.** Multi-write lifecycles (close a sprint, resolve an investigation, ship
+  a feature) end in inconsistent state unless something *owns* the "done" check: a verifiable
+  checklist (flags set, cross-links resolve, the ledger entry exists), with lifecycle state
+  derived from the substrate rather than stored - "resolved" should be *computable*, so it can't
+  drift. It's a capability before it's a skill; graduate it per §1: first a closeout checklist
+  inside the owning workflow, then deterministic derived-state checks, and a dedicated skill
+  only when closeout recurs across workflows or repeated misses prove the checklist isn't enough.
 - **Ephemeral executors.** Long-lived coordinator sessions accrete context bloat. The fix: the
   coordinator stays long-lived and *plans*; execution happens in short-lived sessions spawned
   from a self-contained packet, which run the cycle and then STOP. (This is coordinator-spawn,
@@ -170,6 +207,14 @@ Tune thresholds to blast radius in *both* directions: low-stakes judgment can gr
 than the default, and errors that propagate (anything other docs build on) should graduate
 slower.
 
+**Mind the denominator.** An override rate is only as meaningful as the reviews behind it -
+a low rate can measure low review attention rather than earned reliability. Before you promote
+on the numbers, define: what counts as a *reviewed* run (silent acceptance only counts if the
+output was actually inspected); what counts as an *override* vs a preference tweak (a wording
+edit isn't a routing failure); and a minimum sample size - N approvals in a week of heavy use
+says more than the same N spread over a quarter of neglect. Weight overrides by blast radius:
+one bad substrate write that other docs built on outweighs five bad drafts.
+
 ## 8. The arbiter shape (every clawback mechanism, one template)
 
 Across all of the above - pruning, promotion queues, doc proposals, dispatch patches - the
@@ -211,6 +256,12 @@ Lesson 05's grilling skill mentions a "flagged ambiguities" ledger. At scale, sp
 
 The queue keeps executing sessions uninterrupted (park the ambiguity, keep working); the ledger
 keeps grilling sessions honest (you can see what you already resolved, and why).
+
+Don't create both files on day one - that would fail this lesson's own §1. **Start with one
+queue** whose resolved entries carry the date, closing pointer, and re-open trigger; split the
+ledger out when resolved history starts to obscure the active items, or when you find yourself
+consulting past resolutions repeatedly. The *semantics* (resolve by strikethrough-with-pointer,
+deferrals get triggers) matter from day one; the two-file structure is earned.
 
 ## 10. Write for the reader's moment of use
 

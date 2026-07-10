@@ -19,8 +19,8 @@ Start by editing, in order:
 The rest you get: `docs/adr/0000-*.md` (ADR convention + template), `docs/product/roadmap.md` +
 `issues.md` (live roadmap + known gaps), `docs/sprints/shipped.md` (ship ledger),
 `docs/architecture/doc-tripwires.md` + `data-model.md` (size caps + schema stubs), and
-`scripts/check-docs.mjs` (the first enforcement script: required docs exist, links resolve, size
-caps hold - wire it up as `npm run check:docs` + CI).
+`scripts/check-docs.mjs` (the first enforcement script: required docs exist, links + anchors
+resolve, size caps hold - wire it up as `npm run check:docs` + CI).
 
 **Delete any section that doesn't apply** - a short, accurate template beats a complete one full of
 guesses. Read `../lessons/01-principles.md` once for the *why* before you start filling in.

@@ -14,8 +14,11 @@ The docs tree is the agent's external memory. The rules that make it work:
 4. **Moved content leaves a redirect stub** at the old path, so old links and old habits don't
    break. ("This moved to X.") At scale, stubs grow a pointer table and a second flavor for
    closed-out work items - see lesson 08 §4.
-5. **Titles are metadata.** Status, evidence counts, and close dates belong in doc titles and
-   one-line descriptions - agents route on directory listings long before they open files.
+5. **Titles are metadata.** Status, scope, and close dates belong in doc titles and one-line
+   descriptions - agents route on directory listings long before they open files. But keep
+   high-churn values (evidence counts that increment with every record) in a header field
+   instead when filenames or H1s are link targets - a churning title is link maintenance
+   (lesson 08 §4).
 
 ---
 
@@ -101,9 +104,10 @@ Rules:
 - If it gets big, **split by zone/subdomain** so a session loads only the vocabulary it needs, with
   a thin index doc tying them together. (The proven cut line is *workflow zone* - which sessions
   need which words - not alphabetical or topical grouping.)
-- Pair it with two side files once grilling is a habit: a **queue** of terms waiting for the next
-  grilling session, and a **ledger** of every ambiguity ever resolved (strikethrough + date +
-  pointer to the closing artifact, never deletion). They are different things - see lesson 08 §9.
+- Once grilling is a habit, keep a **queue** of terms waiting for the next grilling session -
+  resolved entries get a strikethrough + date + pointer to the closing artifact, never deletion.
+  When resolved history starts to bury the active items, split it into queue + **ledger** - two
+  different things (see lesson 08 §9), but earned as two files, not created that way.
 
 ## Memory (if the harness supports persistent agent memory)
 

@@ -77,8 +77,8 @@ The goal is not more scaffolding. It's making future agents harder to confuse. F
 - `GLOSSARY.md` - shared vocabulary
 - `docs/adr/` - architecture decision records
 - `docs/product/roadmap.md` + `docs/sprints/shipped.md` - roadmap + ship ledger
-- `scripts/check-docs.mjs` - the first enforcement script (required docs exist, links resolve,
-  size caps hold)
+- `scripts/check-docs.mjs` - the first enforcement script (required docs exist, links + anchors
+  resolve, size caps hold)
 - seven skills (catalog in [`skills/README.md`](skills/README.md))
 
 ## The signature workflow: grill-with-docs

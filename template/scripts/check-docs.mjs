@@ -1,11 +1,14 @@
 #!/usr/bin/env node
 // check:docs - the kit's first deterministic enforcement script.
 //
-// Checks three invariants (lessons 06/07: "prose is insufficient; the script is the enforcement"):
+// Checks four invariants (lessons 06/07: "prose is insufficient; the script is the enforcement"):
 //   1. Required docs exist.
-//   2. Every relative markdown link in every tracked .md file resolves to a real file.
-//   3. No always-loaded doc exceeds its size cap (the doc-tripwires registry).
+//   2. Every relative markdown link in every markdown file resolves to a real file.
+//   3. Every #anchor (same-file or cross-file into a .md) matches a real heading.
+//   4. No always-loaded doc exceeds its size cap (the doc-tripwires registry).
 //
+// Scans tracked + untracked-but-not-ignored .md files, so new docs are checked before they're
+// committed. Links inside fenced code blocks and inline code spans are ignored.
 // Exits non-zero and prints exactly what drifted. No dependencies.
 // Wire it up:  "check:docs": "node scripts/check-docs.mjs"  (+ CI on every PR, daily cron).
 
@@ -13,30 +16,28 @@ import { readFileSync, existsSync, statSync } from "node:fs";
 import { execSync } from "node:child_process";
 import { dirname, join, normalize } from "node:path";
 
-// ---- Tune these three blocks to your repo ---------------------------------
+// ---- Tune these blocks to your repo ---------------------------------------
 
-const REQUIRED_DOCS = [
-  "CLAUDE.md", // or AGENTS.md - whatever your runtime loads every session
-  "PRODUCT.md",
-  "GLOSSARY.md",
-];
+// The file your runtime loads every session: "CLAUDE.md", "AGENTS.md", or equivalent.
+const ROOT_INDEX = "CLAUDE.md";
+
+const REQUIRED_DOCS = [ROOT_INDEX, "PRODUCT.md", "GLOSSARY.md"];
 
 // Size caps in KB for always-loaded surfaces. Keep in sync with
 // docs/architecture/doc-tripwires.md (that file is the registry; this is the enforcement).
 const SIZE_CAPS_KB = {
-  "CLAUDE.md": 40,
+  [ROOT_INDEX]: 40,
   "PRODUCT.md": 40,
   "GLOSSARY.md": 40,
 };
 
-// Links into these path prefixes are skipped (external tools, generated dirs, etc.).
+// Links into these path prefixes are skipped (generated dirs, vendored trees, etc.).
 const SKIP_LINK_PREFIXES = ["node_modules/"];
 
 // ---------------------------------------------------------------------------
 
 const failures = [];
 
-// Tracked + staged markdown files, so new docs are checked before they're committed.
 const mdFiles = execSync("git ls-files --cached --others --exclude-standard '*.md'", {
   encoding: "utf8",
 })
@@ -57,20 +58,60 @@ for (const [doc, capKb] of Object.entries(SIZE_CAPS_KB)) {
   }
 }
 
-// Relative markdown links: [text](path), skipping http(s), mailto, and pure #anchors.
-const LINK_RE = /\[[^\]]*\]\(([^)\s]+)\)/g;
+// Fenced code blocks are invisible to both heading and link scanning. Inline code spans are
+// additionally stripped for link scanning only - a heading's `code` text stays part of its slug.
+const stripFences = (text) => text.replace(/^(```|~~~)[^\n]*\n[\s\S]*?^\1[^\n]*$/gm, "");
+const stripInlineCode = (text) => text.replace(/`[^`\n]*`/g, "");
+
+// GitHub-style heading anchors: lowercase, drop punctuation, spaces -> hyphens,
+// duplicate headings get -1, -2, ... suffixes.
+function headingAnchors(text) {
+  const anchors = new Set();
+  const seen = new Map();
+  for (const m of text.matchAll(/^#{1,6}\s+(.+?)\s*$/gm)) {
+    const slug = m[1]
+      .replace(/!?\[([^\]]*)\]\([^)]*\)/g, "$1") // heading text of a link, not its target
+      .toLowerCase()
+      .replace(/[^\p{L}\p{N}\- ]/gu, "")
+      .trim()
+      .replace(/ +/g, "-");
+    const n = seen.get(slug) ?? 0;
+    seen.set(slug, n + 1);
+    anchors.add(n === 0 ? slug : `${slug}-${n}`);
+  }
+  return anchors;
+}
+
+const fenceStripped = new Map(mdFiles.map((f) => [f, stripFences(readFileSync(f, "utf8"))]));
+const anchorCache = new Map();
+const anchorsOf = (file) => {
+  if (!anchorCache.has(file)) {
+    anchorCache.set(file, headingAnchors(fenceStripped.get(file) ?? stripFences(readFileSync(file, "utf8"))));
+  }
+  return anchorCache.get(file);
+};
+
+// [text](target), ![alt](target), targets may be <bracketed with spaces> or carry a "title".
+const LINK_RE = /!?\[[^\]]*\]\(\s*(<[^>]*>|[^)\s]+)(?:\s+"[^"]*")?\s*\)/g;
 
 for (const file of mdFiles) {
-  const text = readFileSync(file, "utf8");
-  for (const match of text.matchAll(LINK_RE)) {
-    let target = match[1];
-    if (/^(https?:|mailto:|#)/.test(target)) continue;
-    target = decodeURI(target.split("#")[0]);
-    if (!target) continue;
-    const resolved = normalize(target.startsWith("/") ? target.slice(1) : join(dirname(file), target));
+  for (const match of stripInlineCode(fenceStripped.get(file)).matchAll(LINK_RE)) {
+    let target = match[1].startsWith("<") ? match[1].slice(1, -1) : match[1];
+    if (/^[a-z][a-z0-9+.-]*:/i.test(target)) continue; // http(s):, mailto:, etc.
+
+    const [path, ...anchorParts] = target.split("#");
+    const anchor = anchorParts.join("#");
+    const resolved = path
+      ? normalize(decodeURI(path).startsWith("/") ? decodeURI(path).slice(1) : join(dirname(file), decodeURI(path)))
+      : file; // pure #anchor -> same file
     if (SKIP_LINK_PREFIXES.some((p) => resolved.startsWith(p))) continue;
+
     if (!existsSync(resolved)) {
       failures.push(`broken link in ${file}: (${match[1]}) -> ${resolved} does not exist`);
+      continue;
+    }
+    if (anchor && resolved.endsWith(".md") && !anchorsOf(resolved).has(anchor.toLowerCase())) {
+      failures.push(`broken anchor in ${file}: (${match[1]}) -> no heading #${anchor} in ${resolved}`);
     }
   }
 }
