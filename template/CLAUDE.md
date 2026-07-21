@@ -122,8 +122,11 @@ on every non-trivial unit of work:
    applies) / GRILLING (ask, don't ship) / COORDINATING (delegate + own the synthesis).
 
 ## Roadmap currency
-- When you ship from the roadmap: in the SAME change, remove it from `docs/product/roadmap.md` and
-  add a one-line entry to `docs/sprints/shipped.md`. Keeps "queued" and "done" from drifting apart.
+- The roadmap tick and the `docs/sprints/shipped.md` line are one atomic edit, written when
+  **merge evidence exists** - "shipped" means merged, not authored. If your flow merges
+  immediately, that's the same change; under a review-gated policy, the implementation records
+  "pending merge" and a small post-merge closeout writes the tick + shipped line (citing the
+  merged PR). Deployed / live-verified are later, separate facts.
 
 ## Memory (if your harness has persistent memory)
 - [Where memory files live, the one-fact-per-file convention, the index file loaded each session,

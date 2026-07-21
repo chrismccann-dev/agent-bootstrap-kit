@@ -56,8 +56,9 @@ When in doubt, plan. "Simple" is exactly where unexamined assumptions waste the 
 
 - **Retro before docs:** list what didn't work / what surprised us / what we'd do differently. The
   doc updates then write themselves.
-- Update the docs/glossary/memory the change invalidated; tick the roadmap + add a `shipped.md` line
-  in the same change.
+- Update the docs/glossary/memory the change invalidated. Tick the roadmap + add the `shipped.md`
+  line **once merge evidence exists** - in the same change if your flow merges immediately,
+  otherwise as a small post-merge closeout. `shipped.md` records merges, not intentions.
 - **Write a paste-ready kickoff brief for the next session:**
 
 ```

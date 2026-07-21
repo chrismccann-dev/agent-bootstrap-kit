@@ -18,8 +18,11 @@ import { dirname, join, normalize } from "node:path";
 
 // ---- Tune these blocks to your repo ---------------------------------------
 
-// The file your runtime loads every session: "CLAUDE.md", "AGENTS.md", or equivalent.
-const ROOT_INDEX = "CLAUDE.md";
+// The file your runtime loads every session. Auto-discovers the common names so a documented
+// rename (CLAUDE.md -> AGENTS.md) doesn't break the check; pin it explicitly once chosen, e.g.:
+//   const ROOT_INDEX = "AGENTS.md";
+const ROOT_INDEX =
+  ["CLAUDE.md", "AGENTS.md"].find((f) => existsSync(f)) ?? "CLAUDE.md";
 
 const REQUIRED_DOCS = [ROOT_INDEX, "PRODUCT.md", "GLOSSARY.md"];
 

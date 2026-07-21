@@ -38,22 +38,46 @@ This repo is a GitHub template. Click **Use this template**, or:
 ```bash
 gh repo create my-new-project --template chrismccann-dev/agent-bootstrap-kit --private --clone
 cd my-new-project
+```
 
-# copy the template skeleton into the repo root
-cp -R template/. .
+**Minimal profile (recommended)** - the kit's own formalization-tax rule applies to the kit:
+install only what day one earns, add the rest when a specific friction fires.
 
-# install the skills for Claude Code (or your runtime's skills path)
-mkdir -p .claude/skills && cp -R skills/. .claude/skills/
+```bash
+# core surfaces + first enforcement script
+cp template/CLAUDE.md template/PRODUCT.md template/GLOSSARY.md .
+mkdir -p docs/product scripts
+cp template/docs/product/roadmap.md docs/product/
+cp template/scripts/check-docs.mjs scripts/
 
-# optional cleanup of the kit's meta folders
-rm -rf template lessons .claude-plugin   # keep skills/ too if you want repo-local source docs
+# the two starter skills (Claude Code path shown; use your runtime's skills dir)
+mkdir -p .claude/skills
+cp -R skills/grill-with-docs skills/plan-then-implement .claude/skills/
+
+node scripts/check-docs.mjs   # should print "check:docs OK"
 ```
 
 Then:
-1. Fill in `CLAUDE.md` (or rename it to whatever your runtime loads every session, e.g. `AGENTS.md`).
-2. Fill in `PRODUCT.md`.
+1. Fill in `CLAUDE.md` - or rename it to whatever your runtime loads every session (e.g.
+   `AGENTS.md` for Codex; `check-docs.mjs` auto-detects either name - pin `ROOT_INDEX` in the
+   script if you use something else).
+2. Fill in `PRODUCT.md`, then `GLOSSARY.md` as terms earn their place.
 3. Read [`lessons/01-principles.md`](lessons/01-principles.md) once.
-4. Start with two skills: `/plan-then-implement` and `/grill-with-docs`.
+
+**Everything else activates on a trigger**, not on day one:
+
+| Deferred piece | Add it when |
+|---|---|
+| `docs/adr/` | the first non-obvious, hard-to-reverse decision (create with ADR-0001, not empty) |
+| `docs/sprints/shipped.md` | the first merged ship (the roadmap tick needs somewhere to land) |
+| `docs/product/issues.md` | known gaps start accumulating outside the roadmap |
+| `docs/architecture/*` | a surface needs per-column / per-page detail the root index shouldn't hold |
+| `simplify-pass`, `cross-system-audit` | the first over-engineered diff / the first substrate change with multiple consumers |
+| `coordinator-spawn` | the first job too big for one context |
+| `self-improving-skill`, `improve-skill` | skills exist long enough to accumulate friction |
+
+**Full profile** (`cp -R template/. .` + all seven skills) is still there if you'd rather prune
+than accrete - but the minimal profile is the kit's own doctrine applied to itself.
 
 ## Quickstart - existing repo
 

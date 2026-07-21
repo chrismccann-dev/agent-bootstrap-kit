@@ -106,15 +106,19 @@ Keep the roadmap as its own file, `docs/product/roadmap.md`, with three live sec
 - [...]
 
 ## Roadmap hygiene
-- A shipped item moves OUT of Active and INTO docs/sprints/shipped.md in the SAME change that
-  ships it. A closed sprint lingering in Active implies work that doesn't exist; a shipped item
-  missing from shipped.md erases the audit trail.
+- A shipped item moves OUT of Active and INTO docs/sprints/shipped.md as soon as MERGE EVIDENCE
+  exists - and not before. A closed sprint lingering in Active implies work that doesn't exist;
+  a "shipped" line written pre-merge is a ledger claiming things that may never land.
 ```
 
-The discipline that matters: **when you ship from the roadmap, in the same commit you (a) remove
-it from the roadmap and (b) add a one-line entry to `docs/sprints/shipped.md`.** This keeps
-"what's queued" and "what's done" from drifting apart - the single most common doc-rot in a
-roadmap-driven repo. Make it a checklist item in your sprint cadence (it's checkpoint 4's sibling).
+The discipline that matters: **the roadmap tick and the `shipped.md` line are written against
+merge evidence, atomically with each other.** In a high-trust flow where implement → merge is
+one motion, "the same change" works because the change lands *by merging*. Under a review-gated
+policy, the implementation change may record "ready" or "pending merge," and the roadmap tick +
+shipped line happen in a small post-merge closeout - **"shipped" means merged, not authored.**
+(Deployed and live-verified are later, separate facts - see lesson 09.) Either way, do (a)
+remove from roadmap and (b) add the shipped.md line in one commit, so "what's queued" and
+"what's done" can't drift apart - the single most common doc-rot in a roadmap-driven repo.
 
 ## shipped.md
 
