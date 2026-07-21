@@ -147,6 +147,8 @@ If your domain has controlled lists (statuses, categories, taxonomies), the patt
 
 - **Verify end-to-end, not by render.** A UI that displays is not a feature that works. Paste real
   input, trigger the real write, inspect the persisted result. "It rendered" hides write-path bugs.
+  And scope the claim: local, CI-on-tracked-state, deployed, and live-verified are different
+  planes - attest to the one you actually hit, and name what wasn't checked (lesson 09 §3).
 - **Query the live state before trusting a spec.** A spec that says "expected zero of X" gets
   verified against the actual data before you build on it. A surprising number of specs are written
   against a phantom column / an assumed-empty table that isn't.

@@ -39,6 +39,9 @@ inline. CLAUDE.md is the index, not the encyclopedia.]
 section says.]
 
 - **Unscoped or ambiguous work**: ask first before committing, regardless of policy.
+- **Approval is scoped to what was approved.** A plan approval covers construction; approving an
+  exact artifact, applying it, or publishing it are separate seams - name which ones this repo's
+  policy collapses (lessons/09 §1) and get fresh approval past the stated line.
 - Before starting, verify the branch is up to date with main (many PRs may have landed).
 - Never reset a branch without confirming via reflog that recoverable work is preserved.
 - [Commit-message trailer / co-author convention, if any.]
@@ -110,8 +113,10 @@ on every non-trivial unit of work:
    before editing. Non-obvious approach → 2-3 options + a recommendation, not a silent pick.
 2. **State success criteria before implementing.** Vague task → verifiable cases. No placeholders in
    plans.
-3. **Verify before committing.** UI → screenshot each change; logic → run end-to-end with real
-   input and inspect the persisted result. "It should work" is not verification.
+3. **Verify before committing - and name the plane.** UI → screenshot each change; logic → run
+   end-to-end with real input and inspect the persisted result. "It should work" is not
+   verification, and "verified" is a scoped claim: say which plane it ran on (local / CI /
+   deployed / live) and what was deliberately not checked.
 4. **Cross-system audit before PR.** If this changed shared substrate (a term, schema field, tool,
    registry entry, vocabulary word), trace it through every consumer first. (`/cross-system-audit`)
 5. **Simplify before commit.** One pass for duplication / over-engineering. (`/simplify-pass`)

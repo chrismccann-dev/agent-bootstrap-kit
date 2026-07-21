@@ -153,7 +153,11 @@ Full reasoning for each in [`lessons/01-principles.md`](lessons/01-principles.md
 set is indexed in [`lessons/README.md`](lessons/README.md). When the substrate scales past the
 starter patterns (100+ docs, 10+ skills), there's a second-generation set in
 [`lessons/08-scale-lessons.md`](lessons/08-scale-lessons.md): the formalization tax, evidence-gated
-docs, pruning, planner/executor skill splits, staged autonomy, and the arbiter shape.
+docs, pruning, planner/executor skill splits, staged autonomy, and the arbiter shape. And when
+"approved" / "shipped" / "verified" become claims that can be wrong,
+[`lessons/09-state-authority-evidence.md`](lessons/09-state-authority-evidence.md) covers approval
+scoping, evidence-backed status, verification planes, incumbent-baseline protection, and
+evaluation freshness.
 
 ## License
 

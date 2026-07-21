@@ -24,6 +24,7 @@ coherent, loadable, and self-correcting as it compounds.
 | `06-enforcement-and-audit.md` | The repo is big enough to drift and prose reminders aren't enough. |
 | `07-existing-repo-adoption.md` | You're adding the kit to a repo that already has code, docs, and history. |
 | `08-scale-lessons.md` | The substrate has scaled past the starter patterns (100+ docs, 10+ skills, agents writing constantly). |
+| `09-state-authority-evidence.md` | "Approved" / "shipped" / "verified" have become claims that can be wrong - work moves through multi-step lifecycles with real consequences. |
 
 - **New repo?** Read 01-05 first.
 - **Existing repo?** Read **01 and 07 first** - and do *not* copy the greenfield template blindly.

@@ -43,7 +43,8 @@ are cached/invalidated, what vocabulary must survive any rewrite passes.]
 ## Current App State (optional; date-stamped)
 
 [Short "where are we" - shipped + live, stubbed, deprecated. Keep terse + date-stamped, or push to
-the roadmap/shipped log entirely.]
+the roadmap/shipped log entirely. Status words are evidence-backed: "shipped" = merged, "live" =
+verified against the running system - don't write a state before its evidence exists (lessons/09).]
 
 ## Design System (optional - UI products)
 

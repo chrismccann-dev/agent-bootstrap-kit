@@ -37,7 +37,13 @@ When in doubt, plan. "Simple" is exactly where unexamined assumptions waste the 
    back-and-forth.
 5. **No placeholders in the plan.** No "TBD", "TODO", "handle errors appropriately." Concrete content
    or the step doesn't ship.
-6. Get explicit approval.
+6. **If the work has an incumbent** (redesign, migration, refactor, promotion of a prototype):
+   define the baseline first and state what evidence would justify replacing it. "Keep current"
+   is a first-class outcome - don't manufacture a winner because the sprint is ending; if the
+   baseline wins, close the investigation cleanly with a re-open trigger (lesson 09 §4).
+7. Get explicit approval - and note what it covers. Plan approval authorizes construction;
+   approving the exact artifact / applying / publishing are separate seams unless the repo's
+   policy explicitly collapses them (lesson 09 §1).
 
 ## Phase 2 - Implement
 
@@ -56,6 +62,9 @@ When in doubt, plan. "Simple" is exactly where unexamined assumptions waste the 
 
 - **Retro before docs:** list what didn't work / what surprised us / what we'd do differently. The
   doc updates then write themselves.
+- **Attest to the verification plane:** the closeout states what was proven (local / CI / deployed /
+  live, which surfaces) *and* what was deliberately not checked. A scoped check must not read as
+  whole-system integrity (lesson 09 §3).
 - Update the docs/glossary/memory the change invalidated. Tick the roadmap + add the `shipped.md`
   line **once merge evidence exists** - in the same change if your flow merges immediately,
   otherwise as a small post-merge closeout. `shipped.md` records merges, not intentions.

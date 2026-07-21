@@ -138,8 +138,10 @@ checkpoints on every non-trivial unit of work:
    silent pick.
 2. **State success criteria before implementing.** Vague task → verifiable cases. No placeholders
    in plans.
-3. **Verify before committing.** [For UI: screenshot each change. For logic: run it end-to-end
-   with real input.] "It should work" is not verification.
+3. **Verify before committing - and name the plane.** [For UI: screenshot each change. For logic:
+   run it end-to-end with real input.] "It should work" is not verification, and "verified" is a
+   scoped claim - say which plane (local / CI / deployed / live) and what wasn't checked
+   (lesson 09 §3).
 4. **Cross-system audit before PR.** If this changed shared substrate (a term, a schema field, a
    tool, a registry entry, a vocabulary word), trace it through every consumer before declaring
    done. (See lesson 06 - Enforcement, Audit & the Gotchas - for the actor-trace template.)
