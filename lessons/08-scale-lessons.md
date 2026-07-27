@@ -21,7 +21,7 @@ import only the sections for the boundary you actually crossed, not the whole in
 
 ---
 
-## 1. The formalization tax, and the N=3 graduation rule
+## 1. The formalization tax, and the N=3 decision rule
 
 Every rule, doc section, registry row, and skill instruction you add carries a **standing cost**:
 it's loaded into context every time its surface is served, forever. Plus a fluke risk if you

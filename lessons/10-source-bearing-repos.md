@@ -14,10 +14,17 @@ original preservation, scoped authority, deterministic enforcement.
 
 ## 1. Two layers, explicitly separated
 
-- **The System Layer** - the tracked repo: docs, structure, scripts, synthesis, the substrate.
-  Normal kit rules apply.
-- **Protected content** - the sources: originals, exports, corpora, local-only state. Lives
-  under named protected paths, stays out of version control, and is governed by this lesson.
+- **The System Layer** - the tracked repo: docs, structure, scripts, explicitly non-sensitive
+  synthesis, the substrate. Normal kit rules apply.
+- **Protected content** - the sources *and anything sensitive derived from them*: originals,
+  exports, corpora, local-only state, plus summaries or extracts that carry the sensitivity
+  forward. Lives under named protected paths, stays out of version control, and is governed by
+  this lesson.
+
+Derived artifacts **inherit the sensitivity of their sources until reviewed**: summarizing a
+confidential corpus produces a confidential summary by default. Synthesis lands in an approved
+destination - which may be a protected path - and enters the tracked System Layer only once
+it's explicitly judged non-sensitive.
 
 Declare the split in a boundary doc (`docs/local-content-boundary.md` - the kit ships a
 template): which paths are protected, what operations are authorized on them, and where the
@@ -55,11 +62,13 @@ with its own provenance marks, and never let it silently enlarge "the corpus" - 
 ## 5. Enforcement is a script, not a .gitignore
 
 `.gitignore` prevents *accidental staging*; it does not notice a protected file that got force-
-added, a new protected root that nobody ignored, or a copy that landed outside the protected
-tree. Ship a deterministic `check:privacy` (the kit includes a starter,
-`template/scripts/check-privacy.mjs`): protected paths are declared once, the script fails if
-any tracked file falls under them or if the ignore rules don't cover them. Same doctrine as
-lesson 06 §1 - the rule you care about is the rule a script enforces.
+added, or a new protected root that nobody ignored. Ship a deterministic `check:privacy` (the
+kit includes a starter, `template/scripts/check-privacy.mjs`): protected paths are declared
+once, the script fails if any tracked file falls under them or if the ignore rules don't cover
+them. Same doctrine as lesson 06 §1 - the rule you care about is the rule a script enforces.
+Know the check's limit and say it (lesson 09 §3): it is path-based, so a *copy* of protected
+content that lands outside the protected tree is invisible to it - catching that would take a
+separate content-fingerprint audit, which most repos don't need until they've been bitten.
 
 ## 6. Another system may own the live state
 

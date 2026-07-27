@@ -19,7 +19,10 @@ Enforced by `scripts/check-privacy.mjs` (`check:privacy`), not by `.gitignore` a
 
 ## Authorized operations on protected content
 
-- **Authorized:** read, analyze, summarize into the System Layer (with provenance).
+- **Authorized:** read, analyze, summarize into an approved destination (with provenance).
+  Derived artifacts inherit their sources' sensitivity: only synthesis explicitly judged
+  non-sensitive may enter the tracked System Layer; sensitive summaries/extracts stay under a
+  protected path.
 - **NOT authorized without a fresh, explicit instruction:** rename, move, copy, rewrite,
   delete, upload, sync, or transmit anything under a protected path. Drafting an external-use
   artifact does not authorize sending it.
