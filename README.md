@@ -75,6 +75,7 @@ Then:
 | `simplify-pass`, `cross-system-audit` | the first over-engineered diff / the first substrate change with multiple consumers |
 | `coordinator-spawn` | the first job too big for one context |
 | `self-improving-skill`, `improve-skill` | skills exist long enough to accumulate friction |
+| source-bearing profile ([`lessons/10`](lessons/10-source-bearing-repos.md): boundary doc + `check-privacy.mjs`) | a corpus, export, archive, or confidential source lands in (or beside) the repo |
 
 **Full profile** (`cp -R template/. .` + all seven skills) is still there if you'd rather prune
 than accrete - but the minimal profile is the kit's own doctrine applied to itself.

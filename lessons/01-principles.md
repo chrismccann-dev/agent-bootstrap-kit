@@ -86,11 +86,18 @@ only when it's working on that surface.
 ## 9. Close the loop: retro → docs → next-session handoff
 
 Every non-trivial unit of work ends with three artifacts: (a) a retro (what surprised us, what
-we'd do differently), (b) the doc/memory updates that the retro makes obvious, and (c) a
-paste-ready kickoff brief for the next session (problem, goal, scope, entry point, files,
-verification plan, open questions). The handoff is what lets the next session start with
-situational awareness instead of rediscovery. This is how a single-threaded agent gets
-continuity across context resets.
+we'd do differently), (b) the doc/memory updates the retro *earns*, and (c) a paste-ready
+kickoff brief for the next session (problem, goal, scope, entry point, files, verification plan,
+open questions). The handoff is what lets the next session start with situational awareness
+instead of rediscovery. This is how a single-threaded agent gets continuity across context
+resets.
+
+The writeback in (b) is **selective, not automatic**. Classify each lesson from the retro:
+*reusable* (promote it, generalized), *project-specific* (its home doc only), *sensitive*
+(preserve the abstract failure mode and the process correction - not the example), or *merely
+incidental* (write nothing). Write the smallest truthful set of surfaces, and treat "no
+substrate change earned" as a successful retro. An unfiltered writeback rule turns the close-out
+loop into a documentation-bloat and confidentiality-leak mechanism.
 
 ## 10. Delegate with explicit handoffs; one session stays the coordinator
 

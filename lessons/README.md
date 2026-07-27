@@ -25,6 +25,7 @@ coherent, loadable, and self-correcting as it compounds.
 | `07-existing-repo-adoption.md` | You're adding the kit to a repo that already has code, docs, and history. |
 | `08-scale-lessons.md` | The substrate has scaled past the starter patterns (100+ docs, 10+ skills, agents writing constantly). |
 | `09-state-authority-evidence.md` | "Approved" / "shipped" / "verified" have become claims that can be wrong - work moves through multi-step lifecycles with real consequences. |
+| `10-source-bearing-repos.md` | The repo holds material that isn't its own work product - corpora, originals, exports, confidential sources. Skip otherwise. |
 
 - **New repo?** Read 01-05 first.
 - **Existing repo?** Read **01 and 07 first** - and do *not* copy the greenfield template blindly.

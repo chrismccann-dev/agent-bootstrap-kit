@@ -60,8 +60,11 @@ When in doubt, plan. "Simple" is exactly where unexamined assumptions waste the 
 
 ## Phase 3 - Close the loop
 
-- **Retro before docs:** list what didn't work / what surprised us / what we'd do differently. The
-  doc updates then write themselves.
+- **Retro before docs:** list what didn't work / what surprised us / what we'd do differently -
+  then write back **selectively**: promote only durable, generalized, non-sensitive lessons;
+  route project-specific ones to their home doc; for sensitive examples keep the abstract
+  failure mode, not the example; write nothing for the merely incidental. "No substrate change
+  earned" is a successful retro.
 - **Attest to the verification plane:** the closeout states what was proven (local / CI / deployed /
   live, which surfaces) *and* what was deliberately not checked. A scoped check must not read as
   whole-system integrity (lesson 09 §3).

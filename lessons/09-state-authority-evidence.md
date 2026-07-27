@@ -119,6 +119,27 @@ this eventually:
 Staleness detection is mechanical (artifact hash changed → evaluations flip to stale) - a
 natural `check:*` script once evaluations matter (lesson 06 §1).
 
+## 6. Authority attaches to claims, not documents
+
+Everything above scopes *workflow* authority. When agents work over source material - notes,
+reports, exports, archives - the same discipline applies one level down, at the claim:
+
+- **A document's authority does not transfer wholesale to every claim in it.** A trusted source
+  contains reported claims, verified actuals, plans, forecasts, inferences, and recollections -
+  and those are different epistemic kinds. Preserve the kind; don't flatten them all to "the
+  doc says."
+- **Later does not mean verified.** A newer document restating an older claim adds recency, not
+  evidence. Keep the time basis (as-of when?) and the evidence state with the claim, not just
+  with the document.
+- **Preserve contradictions and gaps.** When two sources disagree, or coverage is missing, the
+  honest synthesis records the disagreement / the hole - it does not select a convenient winner
+  or interpolate. (This is §5's "never auto-fill" rule applied to prose.)
+- **"Complete" is always relative to a stated corpus and cutoff.** "All the meetings" means all
+  the meetings *in this corpus, as of this date*. Say so.
+- **Extraction is not verification when form carries meaning.** If layout, tables, charts, or
+  strikethrough encode the signal, a text extraction that drops them has *lost claims*, silently.
+  Verify against the artifact in its meaningful form.
+
 ---
 
 ## The through-line
@@ -126,5 +147,7 @@ natural `check:*` script once evaluations matter (lesson 06 §1).
 Lesson 08's spine was *make the trigger mechanical and the evidence explicit*. This lesson is
 the same rule applied to **claims**: approval names the artifact and the transitions it covers;
 status names the evidence that makes it true; verification names the plane it ran on and the
-surfaces it skipped; evaluations name the version they bound to. A substrate whose claims carry
-their own scope is one an agent can trust at face value - which is the whole point of having one.
+surfaces it skipped; evaluations name the version they bound to; and inside source material,
+each claim keeps its kind, its time basis, and its evidence state. A substrate whose claims
+carry their own scope is one an agent can trust at face value - which is the whole point of
+having one.

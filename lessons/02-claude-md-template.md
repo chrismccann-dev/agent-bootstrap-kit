@@ -147,8 +147,9 @@ checkpoints on every non-trivial unit of work:
    done. (See lesson 06 - Enforcement, Audit & the Gotchas - for the actor-trace template.)
 5. **Simplify before commit.** One pass for duplication / over-engineering after implementation
    is done. Agents over-engineer; catch it before it's tech debt.
-6. **Retro before docs.** List what didn't work / what surprised us / what we'd do differently.
-   The doc updates then write themselves.
+6. **Retro before docs - selective writeback.** List what didn't work / what surprised us / what
+   we'd do differently. Promote only durable, generalized, non-sensitive lessons (principle 9);
+   "no substrate change earned" is a valid outcome.
 7. **Kickoff brief for the next session.** Paste-ready: problem, goal, scope (in/out), entry
    surface, files likely to touch, verification plan, open questions.
 

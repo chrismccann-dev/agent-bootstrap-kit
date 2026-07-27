@@ -22,5 +22,10 @@ The rest you get: `docs/adr/0000-*.md` (ADR convention + template), `docs/produc
 `scripts/check-docs.mjs` (the first enforcement script: required docs exist, links + anchors
 resolve, size caps hold - wire it up as `npm run check:docs` + CI).
 
+Two files are **optional and conditional** - for source-bearing repos only (the repo holds
+corpora, originals, exports, or confidential sources; see `../lessons/10-source-bearing-repos.md`):
+`docs/local-content-boundary.md` (the boundary declaration) and `scripts/check-privacy.mjs` (its
+deterministic enforcement). Delete both otherwise.
+
 **Delete any section that doesn't apply** - a short, accurate template beats a complete one full of
 guesses. Read `../lessons/01-principles.md` once for the *why* before you start filling in.

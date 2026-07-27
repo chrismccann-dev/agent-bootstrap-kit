@@ -32,9 +32,13 @@ The operating rule that made this concrete:
 
 - **Act at N=1.** A bug, an edge case on an *existing* rule, a structural fix - handle it
   immediately; the cost grows if you wait.
-- **Abstract at N=3.** A new reusable rule, doc section, or skill instruction needs three
-  recurrences before it graduates: *once is a fluke, two is a pattern forming, three is graduate
-  it.*
+- **At N=3, the pattern earns a decision - not automatic ratification.** Three recurrences of a
+  candidate rule, doc section, or skill mean it's time to **grill the smallest abstraction that
+  explains the evidence**: recurrence establishes that *something* recurs, but usually not the
+  terminology, the cardinality, the file layout, or whether a skill is warranted at all. *Once
+  is a fluke, two is a pattern forming, three is take it to a grilling session.* And count
+  honestly: three independent, differently-shaped instances are N=3; three correlated sibling
+  cases of the same event are N=1 wearing three hats.
 - **Graduated rules stay provisional.** Keep collecting observations 4-8; edit or delete the rule
   if later evidence diverges. Graduation is not tenure.
 - **N=3 governs convenience abstractions, not safety invariants.** A credible irreversible-risk

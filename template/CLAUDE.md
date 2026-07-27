@@ -120,8 +120,9 @@ on every non-trivial unit of work:
 4. **Cross-system audit before PR.** If this changed shared substrate (a term, schema field, tool,
    registry entry, vocabulary word), trace it through every consumer first. (`/cross-system-audit`)
 5. **Simplify before commit.** One pass for duplication / over-engineering. (`/simplify-pass`)
-6. **Retro before docs.** What didn't work / what surprised us / what we'd do differently. The doc
-   updates then write themselves.
+6. **Retro before docs - selective writeback.** What didn't work / what surprised us / what we'd
+   do differently. Promote only durable, generalized, non-sensitive lessons; abstract sensitive
+   examples to their failure mode; "no substrate change earned" is a valid outcome.
 7. **Kickoff brief for the next session.** Paste-ready: problem, goal, scope (in/out), entry surface,
    files likely to touch, verification plan, open questions. Tag the MODE: EXECUTING (autonomy
    applies) / GRILLING (ask, don't ship) / COORDINATING (delegate + own the synthesis).
