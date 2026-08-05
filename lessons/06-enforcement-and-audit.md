@@ -123,7 +123,7 @@ Two scale refinements (details in lesson 08 §3):
 - **Tier the caps by loading profile** rather than one uniform number - a doc read every session
   gets a tight cap; a deep-reference doc read on demand can be several times larger.
 - **Size caps only catch bloat; they miss rot.** A doc can stay under cap while filling with
-  stale, superseded, or over-detailed sections that bury the load-bearing content. Pruning -
+  stale, superseded, or over-detailed sections that bury the content that's doing real work. Pruning -
   extract / split / consolidate / archive / re-scope / delete - is a first-class periodic
   operation, not just the response to a firing tripwire.
 

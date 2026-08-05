@@ -82,8 +82,8 @@ The scaled version of "don't formalize early," applied to aggregate/synthesis do
 
 Lesson 06's tripwires catch docs that get too *big*. At scale you also need the inverse: docs
 that accumulate stale, over-detailed, or superseded content *without* crossing a size cap.
-Without a pruning discipline, context-window performance degrades as load-bearing content gets
-buried under sections that don't earn their keep at retrieval time. Almost every substrate
+Without a pruning discipline, context-window performance degrades as the content that's doing real
+work gets buried under sections that don't earn their keep at retrieval time. Almost every substrate
 mechanism is ADD-shaped; pruning is the deliberate counterweight.
 
 The six pruning moves, in order of increasing severity (name the move when you propose it):
