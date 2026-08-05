@@ -175,3 +175,9 @@ preferences, standing corrections) vs not (anything the repo already records).]
 - **Resist inlining detail.** Every time you're tempted to add a third paragraph of schema or
   design detail to CLAUDE.md, put it in a `docs/` file with a "read when…" pointer instead. The
   test: would the agent need this on a session that *isn't* about this topic? If no, it's a link.
+- **The environment-as-cache test (a sharper pruning lens).** A line in CLAUDE.md that restates
+  something the agent can look up at runtime - what `package.json` / config / a `--help` / the file
+  tree already answers - is a *cache*, and caches go stale. Only cache what the agent *can't* cheaply
+  look up: the non-obvious decisions, the invariants, the "here's where things live" map. Anything
+  the environment already answers, delete and let the agent read it live. (Credit: Matt Pocock's
+  writing-for-agents.)

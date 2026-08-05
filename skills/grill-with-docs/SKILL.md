@@ -32,6 +32,21 @@ The human's input is the important signal here. **Default to "ask, don't ship."*
 execution-shaped habit push an unmade decision into a doc or into code. The autonomy rule (run
 approved work without re-asking) does NOT apply here.
 
+## How to sequence the questions (work in rounds)
+
+Don't fire everything at once, and don't crawl strictly one-at-a-time either. Work the **frontier**:
+
+- A **round** asks every question whose prerequisites are already settled - each numbered, each with
+  your recommended answer and the trade-off named.
+- Wait for the answers to the whole round.
+- **Recompute the frontier:** those answers unlock the next batch of now-answerable questions. Ask
+  them as the next round.
+- Repeat until the frontier is empty.
+
+This resolves dependencies in order (you never ask a question whose answer hinges on an unmade
+decision) while still moving in batches, so a reviewer can answer several at once instead of being
+drip-fed. If a later answer invalidates an earlier one, re-open it in the next round.
+
 ## Procedure
 
 1. **Read the actual docs first.** Before asserting what the model says, `grep`/read the glossary,

@@ -110,8 +110,8 @@ The goal is not more scaffolding. It's making future agents harder to confuse. F
 
 The most distinctive thing here. Before adding a new concept or building on an ambiguous term, run
 `grill-with-docs`: the agent reads the *actual* glossary and docs (greps before claiming a term is
-missing), challenges fuzzy language, asks one question at a time with a recommended answer, and
-updates the glossary or an ADR only after the decision is settled. It's the antidote to the
+missing), challenges fuzzy language, asks questions in dependency-ordered rounds (each with a
+recommended answer), and updates the glossary or an ADR only after the decision is settled. It's the antidote to the
 definition drift that quietly breaks agent-driven repos. The lived-practice playbook -
 grep-first, analytical-vs-operational classification, the confabulation ledger, and the
 "grilling is not executing" boundary - is in

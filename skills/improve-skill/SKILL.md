@@ -96,6 +96,26 @@ correction - several caught wrong assumptions in the skill's own first draft.
 - **R11 - Cross-skill extraction is shared-mass x N, not N alone.** A 2-line blockquote across 3
   skills stays inline; a 15-20 line spine across 3 skills earns a shared file.
 
+## Additional rubric heuristics (from Matt Pocock's writing-for-agents)
+
+These sharpen the four-axis pass. They're rubric ideas, not lived corrections - apply them, and let
+a real run confirm them:
+
+- **Environment-as-cache (Pruning).** A skill/doc line that restates what the agent can look up at
+  runtime - `package.json`, config, a `--help`, the file tree - is a cache that goes stale. Only keep
+  what the agent *can't* cheaply look up; delete the rest and let it read live.
+- **Model-relative no-op test (Structure).** Whether a step is a dead no-op is settled by *running
+  the doc*, not by debate. If removing the line changes nothing in a real run, it's a no-op - cut it.
+- **Co-location (Structure/Steering).** Scattering the fragments of one instruction across many
+  places is its own defect, *distinct from duplication* (which repeats one thing). If a single
+  meaning is spread thin, pull the pieces together.
+- **Prefer pretrained leading words.** A made-up leading word recruits no priors from the model; a
+  well-chosen common word does. Favor words the model already understands over coined jargon.
+- **Sequence-split only helps across a real boundary.** Splitting a step into a separate call only
+  hides its post-completion detail when it crosses an actual context boundary (a subagent / hand-off).
+  An *inline* "call this sub-procedure" clears nothing from the context - so don't split for size
+  unless there's a genuine boundary.
+
 ## Standing policies this tends to produce
 
 - **Keep skill bodies lean; git + a changelog are provenance's home** (bounded by R10 - evidence

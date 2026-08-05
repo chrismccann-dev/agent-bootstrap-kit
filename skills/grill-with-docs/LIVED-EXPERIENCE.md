@@ -55,11 +55,13 @@ discipline is slipping.
 1. Search before making any doc-structure claim (R1).
 2. Classify the candidate as analytical or operational (R2).
 3. Log confabulations as they happen (R3).
-4. Ask one question. Recommend an answer + name the trade-off.
-5. Wait for the human's answer.
-6. If resolved, update the glossary / system docs **inline** - never batch to the end; precision is
-   highest at the moment the decision resolves.
-7. Repeat.
+4. Ask a **round** of questions - every one whose prerequisites are already settled, each numbered,
+   each with a recommended answer + the trade-off. (See the SKILL's "work in rounds" section.)
+5. Wait for the batch of answers, then recompute the frontier for the next round.
+6. As each decision resolves, update the glossary / system docs **inline** - never batch the *doc
+   writes* to the end; precision is highest at the moment the decision resolves. (Batch the
+   *questions* into rounds; write the *answers* in immediately.)
+7. Repeat until the frontier is empty.
 
 ## Grilling is not executing (the most important rule)
 
@@ -75,7 +77,8 @@ interpretive calls without ever asking.
 ```text
 THIS IS A GRILLING SESSION. DO NOT EXECUTE.
 Interview in long-form prose on every substrate-altering call.
-Ask one question at a time. Default to ask, do not ship.
+Ask in rounds (every question whose prerequisites are settled), each with a recommended answer.
+Default to ask, do not ship.
 Do not reference the normal autonomy rule.
 Do not pre-pick implementation details.
 Do not frame the work as a small mechanical sprint.
@@ -121,7 +124,8 @@ runtime doesn't have that, the grill *is* the domain-modeling pass - do it inlin
    source-of-truth / write path.
 4. **Test the model** with concrete examples and edge cases - invent scenarios that force precise
    boundaries between concepts.
-5. **Ask crisp questions**, one at a time, each with a recommended answer.
+5. **Ask crisp questions in rounds** (every one whose prerequisites are settled), each with a
+   recommended answer; recompute the frontier after each batch of answers.
 6. **Update glossary / ADR / docs only after confirmation** - glossary reserved for
    definitions + relationships, ADRs reserved for hard-to-reverse trade-offs.
 
@@ -130,7 +134,8 @@ runtime doesn't have that, the grill *is* the domain-modeling pass - do it inlin
 1. Confabulation is the **default** failure, not the exception - grep-first exists because a capable
    model will confidently lie about a doc it skimmed.
 2. Keep the glossary **tiny** - R2's whole job is saying "no, that's operational."
-3. **Inline-as-you-go** beats batch.
+3. **Inline-as-you-go** beats batching the doc writes (but batch the *questions* into dependency
+   rounds - see the SKILL's "work in rounds").
 4. ADRs stay **rare**.
 5. The **mode header is a safety device** - a good kickoff brief prevents accidental implementation;
    a bad one authorizes it.
